@@ -1,66 +1,47 @@
 \section{Численный метод}
 
-\subsection{Гиперболические свойства определяющей системы уравнений}
-Рассмотрим одномерное уравнение вида
+Перед тем, как перейти к исследованию полной задачи \ref{matrix_equation} в трёхмерной постановке, рассмотрим одномерное уравнение вида
 \begin{equation}
-\frac{\partial}{\partial{t}}\vec{u}^T+\mathbf{A}\frac{\partial}{\partial{x}}\vec{u}^T=\vec{f}^T.
+\frac{\partial\vec{u}}{\partial{t}}+\mathbf{A}\frac{\partial\vec{u}}{\partial{x}}=0.
 \label{advection_equation}
 \end{equation}
+
+\subsection{Решение одномерной задачи}
+
+\subsubsection{Гиперболические свойства определяющей системы уравнений}
+
 Если матрица $\mathbf{A}$ имеет полный набор вещественных собственных значений, 
 то такое уравнение называется гиперболическим, и его решения соответствуют 
-процессам, которые носят волновой характер. В этом случае справедливо разложение:
-$$\mathbf{A}=\mathbf\Omega^{-1}\mathbf\Lambda\mathbf\Omega,$$
-где $\mathbf\Omega$ -- матрица, составленная из векторов ${\vec\omega_i}$, а 
-$\vec\omega_i$ есть собственные векторы матрицы $\mathbf A$,
-удовлетворяющие соотношениям
-$$\vec\omega_i\mathbf A=\lambda_i\vec\omega_i,$$
-а $\mathbf\Lambda=diag\{\lambda_i\}$ -- диагональная матрица собственных
-значений.
+процессам, которые носят волновой характер. Спектральное исследование матриц $\mathbf{A}_x$, $\mathbf{A}_y$, $\mathbf{A}_z$ проведено в \cite{chelnokov}, где показано, что для них существует полный набор собственных значений и собственных векторов.
 
-Домножив уравнение \ref{advection_equation} слева на $\Omega$, получаем
-уравнение
-$$\frac{\partial}{\partial t}\Omega{\vec u}^T+
-\Lambda\frac{\partial}{\partial x}\Omega{\vec u}^T=\Omega{\vec f}^T,$$
-которое после перехода к Римановым инвариантам ${\vec v}^T=\Omega{\vec u}^T$
-распадается на $n$ одномерных уравнений вида
+В этом случае для любой из матриц $\mathbf{A}_x$, $\mathbf{A}_y$, $\mathbf{A}_z$ существует разложение:
+$$\mathbf{A}=\mathbf\Omega^{-1}\mathbf\Lambda\mathbf\Omega,$$
+где $\mathbf\Omega$ -- матрица, строки которой $\vec\omega_i^T$ являются собственными для матрицы $\mathbf A$ и
+удовлетворяют соотношениям
+$$\vec\omega_i^T\mathbf A=\lambda_i\vec\omega_i^T$$ или, что то же самое, транспонированные строки $\mathbf\Omega$ являются собственными векторами для матрицы $\mathbf A^T$
+$$\mathbf A^T\vec\omega_i=\lambda_i\vec\omega_i.$$
+Здесь $\mathbf\Lambda=diag\{\lambda_i\}$ -- диагональная матрица соответствующих собственных значений.
+
+Домножив уравнение \ref{advection_equation} слева на $\mathbf\Omega$, получаем уравнение
+$$\frac{\partial{\mathbf\Omega{\vec u}}}{\partial t}+
+\Lambda\frac{\partial{\mathbf\Omega{\vec u}}}{\partial x}=0,$$
+которое после перехода к инвариантам Римана ${\vec v}=\mathbf\Omega{\vec u}$ приобретает вид
+$$\frac{\partial{\vec v}}{\partial t}+
+\Lambda\frac{\partial{\vec v}}{\partial x}=0$$
+и тем самым распадается на $n$ одномерных уравнений вида
 \begin{equation}
-\frac{\partial}{\partial t}{v_i}+\lambda_i\frac{\partial}{\partial
-x}{v_i}={{\tilde f}_i},
+\frac{\partial{v_i}}{\partial t}+\lambda_i\frac{\partial{v_i}}{\partial x}=0.
 \label{advection_equation_splitted}
 \end{equation}
-где ${{\tilde f}_i}=(\Omega{\vec f}^T)_i$.
 Таким образом, решение уравнения \ref{advection_equation} представляется в виде
 суммы плоских волн, движущихся со скоростями $\lambda_i$.
 
+\subsubsection{Сеточно-характеристический метод}
 
-\subsection{Расщепление по направлениям}
-Идея метода \cite{fedorenko} решения исходной задачи состоит в замене трёхмерной системы
-уравнений \ref{matrix_equation} тремя одномерными системами 
-\begin{equation}
-\frac{\partial}{\partial t}\vec u+\mathbf{A}_x \frac{\partial}{\partial x}\vec u
-= 0,
-\label{matrix_equation_x}
-\end{equation}
-\begin{equation}
-\frac{\partial}{\partial t}\vec u+\mathbf{A}_y \frac{\partial}{\partial y}\vec u
-= 0,
-\label{matrix_equation_y}
-\end{equation}
-\begin{equation}
-\frac{\partial}{\partial t}\vec u+\mathbf{A}_z \frac{\partial}{\partial z}\vec u
-= 0,
-\label{matrix_equation_z}
-\end{equation}
-\begin{equation}
-\frac{\partial}{\partial t}\vec u = \vec f.
-\label{matrix_equation_f}
-\end{equation}
-Эти уравнения решаются последовательно (первым решается уравнение
-\ref{matrix_equation_f}, последним -- \ref{matrix_equation_x}) с использованием
-на каждом шаге результатов, полученных на предыдущем шаге.
+\todo{Внятный рассказ на пальцах}
+\todo{Внятно про структурные и бесструктурные сетки}
 
-
-\subsection{Решение одномерной задачи}
+\subsubsection{Расчёт внутренних узлов}
 Рассмотрим несколько подробнее метод решения одномерной задачи
 \begin{equation}
 \frac{\partial}{\partial t}v+\lambda \frac{\partial}{\partial x}v = 0.
@@ -80,8 +61,12 @@ $$v_i^{n+1}(\xi_m)=v^{n}_i(\xi_m-\lambda_i\tau).$$
 методы реконструкции значения в данной точке (в данной работе используется
 интерполяция).
 
+\subsubsection{Расчёт граничных узлов}
 
-\subsection{Расчёт граничных узлов}
+\todo{Внятно написать эти два раздела}
+
+\subsubsection{Расчёт контактных узлов}
+
 Метод, описанный в предыдущем пункте, годится лишь для расчёта внутренних узлов
 сетки, т.е. только в том случае, если характеристика, выпущенная из узла, не
 выводит за пределы области интегрирования. В случае, когда узел является
@@ -114,3 +99,32 @@ v_\tau=\tilde{v}_\tau.
 метода, описанного ранее; остальные уравнения заменяются граничными
 соотношениями. После этого, решается полученная СЛАУ, из которой определяются
 значения всех компонент вектора $v^T$ в текущем узле.
+
+
+\subsection{Решение многомерной задачи}
+
+\subsubsection{Расщепление по направлениям}
+Идея метода \cite{fedorenko} решения исходной задачи состоит в замене трёхмерной системы
+уравнений \ref{matrix_equation} тремя одномерными системами 
+\begin{equation}
+\frac{\partial}{\partial t}\vec u+\mathbf{A}_x \frac{\partial}{\partial x}\vec u
+= 0,
+\label{matrix_equation_x}
+\end{equation}
+\begin{equation}
+\frac{\partial}{\partial t}\vec u+\mathbf{A}_y \frac{\partial}{\partial y}\vec u
+= 0,
+\label{matrix_equation_y}
+\end{equation}
+\begin{equation}
+\frac{\partial}{\partial t}\vec u+\mathbf{A}_z \frac{\partial}{\partial z}\vec u
+= 0,
+\label{matrix_equation_z}
+\end{equation}
+\begin{equation}
+\frac{\partial}{\partial t}\vec u = \vec f.
+\label{matrix_equation_f}
+\end{equation}
+Эти уравнения решаются последовательно (первым решается уравнение
+\ref{matrix_equation_f}, последним -- \ref{matrix_equation_x}) с использованием
+на каждом шаге результатов, полученных на предыдущем шаге.
