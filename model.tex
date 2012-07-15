@@ -98,6 +98,7 @@ F_{ij}=0.
 В этом соотношении $\lambda$ и $\mu$ -- параметры Ламе, $\delta_{ij}$ -- символ Кронекера.
 
 \subsubsection{Матричная форма уравнений в случае линейно упругого тела}
+\label{elastic_matrixes}
 
 Для линейно упругого тела матрицы $\mathbf{A}_x$, $\mathbf{A}_y$, $\mathbf{A}_z$ в \ref{matrix_equation} принимают следующий вид.
 
@@ -164,11 +165,12 @@ F_{ij}=0.
 \label{I_parameter_plastic}
 I=\begin{cases}
 0, & \text{если $S = \sigma_{xx}^2+\sigma_{yy}^2+\sigma_{zz}^2+2\sigma_{xy}^2 < 2K^2$}\\
-1, & \text{если $S >= 2K^2$}.
+1, & \text{если $S \ge 2K^2$}.
 \end{cases}
 \end{equation}
 
 \subsubsection{Матричная форма уравнений в случае упруго-пластического тела}
+\label{plastic_matrixes}
 
 Для линейно упругого тела матрицы $\mathbf{A}_x$, $\mathbf{A}_y$, $\mathbf{A}_z$ в \ref{matrix_equation} имеют существенно более сложный вид, так как компоненты тензора $q_{ijkl}$ зависят от компонентов тензора $\sigma$. Значения $\sigma_{ij}$ в общем случае различны в каждой точке пространства в каждый момент времени. Это приводит к тому, что невозможно упростить вид матриц аналитически и получить их покомпонентную запись в терминах $\lambda, \mu, \rho$, как это было сделано для линейно упругого тела. Значения ненулевых элементов каждой матрицы необходимо вычислять в каждой точке пространства в каждый момент времени в соответствии с \ref{tensor_qijkl_plastic} и \ref{I_parameter_plastic}, используя текущие значения $\sigma_{ij}$ в данной точке.
 
@@ -220,4 +222,157 @@ I=\begin{cases}
 
 \subsection{Преобразование уравнений при смене базиса}
 
-\todo{Вывод. Вид матриц. Анализ матриц. Неортогональный базис. Исследование последствий для шага по времени.}
+При практической реализации численного метода для решения системы \ref{matrix_equation} достаточно часто возникает необходимость смены базиса. Это может быть связано, например, с необходимостью случайного выбора направления координатных осей. Случайный выбор базиса используется для того, чтобы исключить наличие выделенных направлений, которые приводят к анизотропии численного решения. Еще одной частой причиной смены базиса является расчет областей с границей сложной формы. В этом случае при расчете граничных точек метод может требовать определенной ориентации осей базиса относительно внешней нормали в данной точке границы.
+
+Исследуем, как преобразуются уравнения при смене базиса. Для этого рассмотрим исходный базис $\vec x = (x, y, z)^T$ и новый базис $\vec \xi = (\xi, \eta, \zeta)^T$. Пусть $\mathbf G$ - матрица, столбцами которой являются координаты векторов нового базиса $\vec \xi$ в старом базисе $\vec x$.
+
+Тогда координаты точек, их скорости, а также компоненты тензора напряжений при переходе между базисами преобразуются следующим образом:
+\begin{eqnarray}
+\label{basis_change}
+\vec r_x = \mathbf G \vec r_{\xi},
+\nonumber\\
+\vec v_x = \mathbf G \vec v_{\xi},
+\nonumber\\
+\vec \sigma_x = \mathbf G \sigma_{\xi} \mathbf G,
+\nonumber\\
+\vec r_{\xi} = {\mathbf G}^{-1} \vec r_x,
+\nonumber\\
+\vec v_{\xi} = {\mathbf G}^{-1} \vec v_x,
+\nonumber\\
+\vec \sigma_{\xi} = {\mathbf G}^{-1} \sigma_x {\mathbf G}^{-1}.
+\end{eqnarray}
+
+Здесь индекс $x$ относится к величинам, заданным в старом базисе, а индекс $\xi$ -- в новом.
+
+Переход к производным по направлениям нового базиса в \ref{matrix_equation} приводит к следующим преобразованиям:
+\begin{eqnarray}
+\nonumber
+\vec{f} = \frac{\partial\vec{u}}{\partial{t}} + 
+\mathbf{A}_x\frac{\partial\vec{u}}{\partial{x}} + 
+\mathbf{A}_y\frac{\partial\vec{u}}{\partial{y}} + 
+\mathbf{A}_z\frac{\partial\vec{u}}{\partial{z}} =
+\nonumber\\
+\frac{\partial\vec{u}}{\partial{t}} + 
+\mathbf{A}_x (\frac{\partial\vec{u}}{\partial{\xi}}\frac{\partial{\xi}}{\partial{x}} + 
+\frac{\partial\vec{u}}{\partial{\eta}}\frac{\partial{\eta}}{\partial{x}} + 
+\frac{\partial\vec{u}}{\partial{\zeta}}\frac{\partial{\zeta}}{\partial{x}} ) + 
+\nonumber\\
+\mathbf{A}_y (\frac{\partial\vec{u}}{\partial{\xi}}\frac{\partial{\xi}}{\partial{y}} + 
+\frac{\partial\vec{u}}{\partial{\eta}}\frac{\partial{\eta}}{\partial{y}} + 
+\frac{\partial\vec{u}}{\partial{\zeta}}\frac{\partial{\zeta}}{\partial{y}} ) + 
+\nonumber\\
+\mathbf{A}_z (\frac{\partial\vec{u}}{\partial{\xi}}\frac{\partial{\xi}}{\partial{z}} + 
+\frac{\partial\vec{u}}{\partial{\eta}}\frac{\partial{\eta}}{\partial{z}} + 
+\frac{\partial\vec{u}}{\partial{\zeta}}\frac{\partial{\zeta}}{\partial{z}} ) = 
+\nonumber\\
+\frac{\partial\vec{u}}{\partial{t}} + 
+( \frac{\partial{\xi}}{\partial{x}} \mathbf{A}_x  + 
+\frac{\partial{\xi}}{\partial{y}} \mathbf{A}_y + 
+\frac{\partial{\xi}}{\partial{z}} \mathbf{A}_z ) \frac{\partial\vec{u}}{\partial{\xi}} + 
+\nonumber\\
+( \frac{\partial{\eta}}{\partial{x}} \mathbf{A}_x + 
+\frac{\partial{\eta}}{\partial{y}} \mathbf{A}_y + 
+\frac{\partial{\eta}}{\partial{z}} \mathbf{A}_z ) \frac{\partial\vec{u}}{\partial{\eta}} + 
+\nonumber\\
+( \frac{\partial{\zeta}}{\partial{x}} \mathbf{A}_x  + 
+\frac{\partial{\zeta}}{\partial{y}} \mathbf{A}_y + 
+\frac{\partial{\zeta}}{\partial{z}} \mathbf{A}_z ) \frac{\partial\vec{u}}{\partial{\zeta}}.
+\end{eqnarray}
+
+Таким образом, уравнение \ref{matrix_equation} после замены базиса имеет вид:
+\begin{equation}
+\label{matrix_equation_generalized}
+\frac{\partial\vec{u}}{\partial{t}} + 
+( \xi_x \mathbf{A}_x  + \xi_y \mathbf{A}_y + \xi_z \mathbf{A}_z ) \frac{\partial\vec{u}}{\partial{\xi}} + 
+( \eta_x \mathbf{A}_x + \eta_y \mathbf{A}_y + \eta_z \mathbf{A}_z ) \frac{\partial\vec{u}}{\partial{\eta}} + 
+( \zeta_x \mathbf{A}_x  + \zeta_y \mathbf{A}_y + \zeta_z \mathbf{A}_z ) \frac{\partial\vec{u}}{\partial{\zeta}} = \vec f.
+\end{equation}
+
+Из вида уравнения \ref{matrix_equation_generalized} очевидным образом возникает задача исследования матрицы общего вида:
+\begin{equation}
+\label{matrix_generalized}
+\mathbf{A}_q = q_x \mathbf{A}_x  + q_y \mathbf{A}_y + q_z \mathbf{A}_z,
+\end{equation}
+где $\mathbf{A}_q$ -- обобщенный вид матрицы, возникающей при переходе в новую систему координат, $q_x$ -- производные базисных векторов нового базиса по старому базису. В случае, когда оба базиса ортонормированные,
+\begin{equation}
+\label{good_basis_condition}
+q_x^2 + q_y^2 + q_z^2 = 1.
+\end{equation}
+Уравнения \ref{matrix_equation_generalized} и \ref{matrix_generalized} верны и в случае произвольных базисов, в том числе неортогональных, но соотношение \ref{good_basis_condition} в этом случае уже не выполняется.
+
+\subsubsection{Исследование матрицы $\mathbf{A}_q$ в случае линейной упругости}
+
+Рассмотрим частный, но важный случай линейно упругого тела. Он представляет отдельный интерес, так как позволяет получить все необходимые соотношения в аналитическом виде явным образом, и таким образом исследовать, как отражается смена базиса на полной схеме построения численного метода. В случае линейной упругости в обобщенную матрицу \ref{matrix_generalized} входят матрицы $\mathbf{A}_x, \mathbf{A}_y, \mathbf{A}_z$, явный вид которых приведен в разделе \ref{elastic_matrixes}. Получаем следующий вид обобщенной матрицы (с точностью до знака):
+
+\begin{equation}
+\label{matrix_generalized_elastic}
+- \mathbf{A}_q =
+\left( \begin{array}{cccccccccccc}
+0 & 0 & 0 & \frac 1 \rho q_x & \frac 1 \rho q_y & \frac 1 \rho q_z & 0 & 0 & 0 \\ 
+0 & 0 & 0 & 0 & \frac 1 \rho q_x & 0 & \frac 1 \rho q_y & \frac 1 \rho q_z & 0 \\ 
+0 & 0 & 0 & 0 & 0 & \frac 1 \rho q_x & 0 & \frac 1 \rho q_y & \frac 1 \rho q_z \\ 
+(\lambda+2\mu) q_x & \lambda q_y & \lambda q_z & 0 & 0 & 0 & 0 & 0 & 0 \\ 
+\mu q_y & \mu q_x & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\ 
+\mu q_z & 0 & \mu q_x & 0 & 0 & 0 & 0 & 0 & 0 \\ 
+\lambda q_x & (\lambda+2\mu) q_y & \lambda q_z & 0 & 0 & 0 & 0 & 0 & 0 \\ 
+0 & \mu q_z & \mu q_y & 0 & 0 & 0 & 0 & 0 & 0 \\ 
+\lambda q_x & \lambda q_y & (\lambda+2\mu) q_z & 0 & 0 & 0 & 0 & 0 & 0  
+\end{array} \right)
+\end{equation}
+
+Полученная матрица имеет следующую структуру:
+
+\begin{eqnarray}
+- \mathbf{A}_q =
+\left( \begin{array}{cccccccccccc}
+0 & \mathbf{B} \\
+\mathbf{C} & 0
+\end{array} \right),
+\nonumber\\
+\mathbf{B} = 
+\left( \begin{array}{cccccccccccc}
+\frac 1 \rho q_x & \frac 1 \rho q_y & \frac 1 \rho q_z & 0 & 0 & 0 \\ 
+0 & \frac 1 \rho q_x & 0 & \frac 1 \rho q_y & \frac 1 \rho q_z & 0 \\ 
+0 & 0 & \frac 1 \rho q_x & 0 & \frac 1 \rho q_y & \frac 1 \rho q_z 
+\end{array} \right),
+\nonumber\\
+\mathbf{C} = 
+\left( \begin{array}{cccccccccccc}
+(\lambda+2\mu) q_x & \lambda q_y & \lambda q_z \\ 
+\mu q_y & \mu q_x & 0 \\ 
+\mu q_z & 0 & \mu q_x \\ 
+\lambda q_x & (\lambda+2\mu) q_y & \lambda q_z \\ 
+0 & \mu q_z & \mu q_y \\ 
+\lambda q_x & \lambda q_y & (\lambda+2\mu) q_z  
+\end{array} \right)
+\end{eqnarray}
+
+При нахождении собственных значений и векторов по методу Челнокова \cite{chelnokov} задача сводится к нахождению их для матрицы $\mathbf{C}^T \mathbf{B}^T$, которая имеет следующий вид:
+
+\begin{eqnarray}
+\frac 1 \rho 
+\left( \begin{array}{cccccccccccc}
+(\lambda+2\mu) q_x^2 + \mu q_y^2 + \mu q_z^2 & (\lambda+\mu) q_x q_y & (\lambda+\mu) q_x q_z \\
+(\lambda+\mu) q_x q_y & \mu q_x^2 + (\lambda+2\mu) q_y^2 + \mu q_z^2 & (\lambda+\mu) q_y q_z \\
+(\lambda+\mu) q_x q_z & (\lambda+\mu) q_y q_z & \mu q_x^2 + \mu q_y^2 + (\lambda+2\mu) q_z^2  
+\end{array} \right).
+\end{eqnarray} 
+
+Собственные числа имеют вид:
+\begin{eqnarray}
+\left( \begin{array}{cccccccccccc}
+\lambda_1 \\
+\lambda_2 \\
+\lambda_3 
+\end{array} \right) = 
+\frac 1 \rho (q_x^2 + q_y^2 + q_z^2)
+\left( \begin{array}{cccccccccccc}
+(\lambda+2\mu) \\
+\mu \\
+\mu  
+\end{array} \right).
+\end{eqnarray} 
+
+Таким образом, при смене базиса собственные числа $\lambda_i$ меняются в $q_x^2 + q_y^2 + q_z^2$ раз. Если оба базиса ортонормированные, то соотношение \ref{good_basis_condition} выполняется и собственные числа не меняются при смене базиса. В случае же перехода в неортонормированный базис собственные числа могут меняться в широком диапазоне.
+
+От $\lambda_i$ напрямую зависит, какие точки на предыдущем шаге по времени будут нужны для реконструкции решения на новом временном слое. Чем больше значения $\lambda_i$, тем больше угол наклона характеристики (см.ниже \todo{ссылка}). При увеличении $\lambda_i$ следует ожидать уменьшения допустимого шага по времени (при использовании курантовского ограничения на шаг $\lambda\tau / h \le 1$), либо (при попытке сохранить шаг по времени неизменным) еще более неприятных последствий, таких как появление непредусмотренных характеристик, выводящих за пределы расчетной области. Действительно, экспериментально было получено, что при попытке использовать неортогональный базис для расчета граничных узлов происходит увеличение $\lambda_i$ при переходе в новый базис и проявляются оба эти эффекта.
