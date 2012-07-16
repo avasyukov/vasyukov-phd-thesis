@@ -244,6 +244,8 @@ I=\begin{cases}
 
 Здесь индекс $x$ относится к величинам, заданным в старом базисе, а индекс $\xi$ -- в новом.
 
+При программной реализации того или иного метода решения системы \ref{matrix_equation} удобно задавать входные параметры и получать результаты в некоторой фиксированной декартовой системе координат $\vec x$, так как такой формат является естественным для предметной области. Что принципиально с точки зрения реализации метода -- уравнения \ref{matrix_equation} записаны в форме, независимой от выбора той или иной системы координат. Поэтому можно хранить состояние среды (компоненты скорости и напряжения) в фиксированном базисе $\vec x$, а вычисления вести в некотором локальном базисе $\vec \xi$, удобном с точки зрения алгоритма численного метода и локальной конфигурации узлов расчётной сетки. В этом случае необходимо лишь специально указать, какие операторы подставлять вместо компонент градиента.
+
 Переход к производным по направлениям нового базиса в \ref{matrix_equation} приводит к следующим преобразованиям:
 \begin{eqnarray}
 \nonumber
@@ -288,7 +290,14 @@ I=\begin{cases}
 ( \zeta_x \mathbf{A}_x  + \zeta_y \mathbf{A}_y + \zeta_z \mathbf{A}_z ) \frac{\partial\vec{u}}{\partial{\zeta}} = \vec f.
 \end{equation}
 
-Из вида уравнения \ref{matrix_equation_generalized} очевидным образом возникает задача исследования матрицы общего вида:
+Или, после замены обозначений:
+\begin{equation}
+\label{matrix_equation_generalized_short}
+\frac{\partial\vec{u}}{\partial{t}} + \mathbf{A}_\xi \frac{\partial\vec{u}}{\partial{\xi}} + 
+\mathbf{A}_\eta \frac{\partial\vec{u}}{\partial{\eta}} + \mathbf{A}_\zeta \frac{\partial\vec{u}}{\partial{\zeta}} = \vec f.
+\end{equation}
+
+Из вида уравнений \ref{matrix_equation_generalized} и \ref{matrix_equation_generalized_short} очевидным образом возникает задача исследования матрицы общего вида:
 \begin{equation}
 \label{matrix_generalized}
 \mathbf{A}_q = q_x \mathbf{A}_x  + q_y \mathbf{A}_y + q_z \mathbf{A}_z,
@@ -298,7 +307,7 @@ I=\begin{cases}
 \label{good_basis_condition}
 q_x^2 + q_y^2 + q_z^2 = 1.
 \end{equation}
-Уравнения \ref{matrix_equation_generalized} и \ref{matrix_generalized} верны и в случае произвольных базисов, в том числе неортогональных, но соотношение \ref{good_basis_condition} в этом случае уже не выполняется.
+Уравнения \ref{matrix_equation_generalized}, \ref{matrix_equation_generalized_short} и \ref{matrix_generalized} верны и в случае произвольных базисов, в том числе неортогональных, но соотношение \ref{good_basis_condition} в этом случае уже не выполняется.
 
 \subsubsection{Исследование матрицы $\mathbf{A}_q$ в случае линейной упругости}
 
