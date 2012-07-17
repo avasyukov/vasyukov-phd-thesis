@@ -153,7 +153,7 @@
 \newpage
 
 \subsection{Сферический взрыв}
-Для проверки корректности расчёта при отражении от границ был произведён расчёт
+Для проверки изотропии схемы и корректности расчёта при отражении от границ был произведён расчёт
 модельной задачи о сферическом взрыве со следующими параметрами:
 \begin{itemize}
 \item размер расчётной области: 50x50x50;
@@ -254,6 +254,177 @@
 \includegraphics[width=0.6\textwidth]{png/spherical-explosion-test/v-scalar/0070.png}
 \caption{Расчёт задачи о сферическом врзыве, 70-й временной слой. Цветом изображен модуль скоростей.}
 \label{pic:spherical_70}
+\end{figure}
+
+\clearpage
+\newpage
+
+\subsection{Конечные деформации}
+Для проверки расчета при конечных деформациях был выполнен расчёт модельной задачи о воздействии ударника на пластину. Воздействие задавалось граничным условием на нормальную компоненту силы в области удара.
+
+На графиках (см. рис. \ref{pic:moving_border_1}-\ref{pic:moving_border_40}) изображены результаты расчётов.
+
+\begin{figure}[htp]
+\centering
+\includegraphics[width=0.6\textwidth]{png/border-test/v-2d/0001.png}
+\caption{Расчёт задачи о вхождении ударника в пластину, 1-й временной слой. Цветом изображен модуль скоростей.}
+\label{pic:moving_border_1}
+\end{figure}
+
+\begin{figure}[htp]
+\centering
+\includegraphics[width=0.6\textwidth]{png/border-test/v-2d/0010.png}
+\caption{Расчёт задачи о вхождении ударника в пластину, 10-й временной слой. Цветом изображен модуль скоростей.}
+\end{figure}
+
+\begin{figure}[htp]
+\centering
+\includegraphics[width=0.6\textwidth]{png/border-test/v-2d/0020.png}
+\caption{Расчёт задачи о вхождении ударника в пластину, 20-й временной слой. Цветом изображен модуль скоростей.}
+\end{figure}
+
+\begin{figure}[htp]
+\centering
+\includegraphics[width=0.6\textwidth]{png/border-test/v-2d/0030.png}
+\caption{Расчёт задачи о вхождении ударника в пластину, 30-й временной слой. Цветом изображен модуль скоростей.}
+\end{figure}
+
+\begin{figure}[htp]
+\centering
+\includegraphics[width=0.6\textwidth]{png/border-test/v-2d/0040.png}
+\caption{Расчёт задачи о вхождении ударника в пластину, 40-й временной слой. Цветом изображен модуль скоростей.}
+\label{pic:moving_border_40}
+\end{figure}
+
+
+\clearpage
+\newpage
+
+\subsection{Контакт тел}
+Для проверки расчета контактных границ и взаимодействия тел был выполнен расчёт задачи об ударе по пластине с явным моделированием пластины и ударника на отдельных сетках.
+
+На графиках (см. рис. \ref{pic:striker_test_2d_1}-\ref{pic:striker_test_2d_280}) изображены поля скоростей в пластине и ударнике.
+
+\begin{figure}[htp]
+\centering
+\includegraphics[width=0.6\textwidth]{png/strike-test/both-2d/0001.png}
+\caption{Поля скоростей в ударнике и пластине. 1-й временной слой. Цветом изображен модуль скорости.}
+\label{pic:striker_test_2d_1}
+\end{figure}
+
+\begin{figure}[htp]
+\centering
+\includegraphics[width=0.6\textwidth]{png/strike-test/both-2d/0040.png}
+\caption{Поля скоростей в ударнике и пластине. 40-й временной слой. Цветом изображен модуль скорости.}
+\end{figure}
+
+\begin{figure}[htp]
+\centering
+\includegraphics[width=0.6\textwidth]{png/strike-test/both-2d/0080.png}
+\caption{Поля скоростей в ударнике и пластине. 80-й временной слой. Цветом изображен модуль скорости.}
+\end{figure}
+
+\begin{figure}[htp]
+\centering
+\includegraphics[width=0.6\textwidth]{png/strike-test/both-2d/0120.png}
+\caption{Поля скоростей в ударнике и пластине. 120-й временной слой. Цветом изображен модуль скорости.}
+\end{figure}
+
+\begin{figure}[htp]
+\centering
+\includegraphics[width=0.6\textwidth]{png/strike-test/both-2d/0160.png}
+\caption{Поля скоростей в ударнике и пластине. 160-й временной слой. Цветом изображен модуль скорости.}
+\end{figure}
+
+\begin{figure}[htp]
+\centering
+\includegraphics[width=0.6\textwidth]{png/strike-test/both-2d/0200.png}
+\caption{Поля скоростей в ударнике и пластине. 200-й временной слой. Цветом изображен модуль скорости.}
+\end{figure}
+
+\begin{figure}[htp]
+\centering
+\includegraphics[width=0.6\textwidth]{png/strike-test/both-2d/0240.png}
+\caption{Поля скоростей в ударнике и пластине. 240-й временной слой. Цветом изображен модуль скорости.}
+\end{figure}
+
+\begin{figure}[htp]
+\centering
+\includegraphics[width=0.6\textwidth]{png/strike-test/both-2d/0280.png}
+\caption{Поля скоростей в ударнике и пластине. 280-й временной слой. Цветом изображен модуль скорости.}
+\label{pic:striker_test_2d_280}
+\end{figure}
+
+\clearpage
+
+На графиках (см. рис. \ref{pic:striker_test_plate_1}-\ref{pic:striker_test_plate_200}) изображено трёхмерное распределение поля скоростей в пластине.
+
+\begin{figure}[htp]
+\centering
+\includegraphics[width=0.6\textwidth]{png/strike-test/plate-3d-v/0001.png}
+\caption{Трёхмерное распределение поля скоростей в пластине. 1-й временной слой. Цветом изображен модуль скорости.}
+\label{pic:striker_test_plate_1}
+\end{figure}
+
+\begin{figure}[htp]
+\centering
+\includegraphics[width=0.6\textwidth]{png/strike-test/plate-3d-v/0020.png}
+\caption{Трёхмерное распределение поля скоростей в пластине. 20-й временной слой. Цветом изображен модуль скорости.}
+\end{figure}
+
+\begin{figure}[htp]
+\centering
+\includegraphics[width=0.6\textwidth]{png/strike-test/plate-3d-v/0040.png}
+\caption{Трёхмерное распределение поля скоростей в пластине. 40-й временной слой. Цветом изображен модуль скорости.}
+\end{figure}
+
+\begin{figure}[htp]
+\centering
+\includegraphics[width=0.6\textwidth]{png/strike-test/plate-3d-v/0060.png}
+\caption{Трёхмерное распределение поля скоростей в пластине. 60-й временной слой. Цветом изображен модуль скорости.}
+\end{figure}
+
+\begin{figure}[htp]
+\centering
+\includegraphics[width=0.6\textwidth]{png/strike-test/plate-3d-v/0080.png}
+\caption{Трёхмерное распределение поля скоростей в пластине. 80-й временной слой. Цветом изображен модуль скорости.}
+\end{figure}
+
+\begin{figure}[htp]
+\centering
+\includegraphics[width=0.6\textwidth]{png/strike-test/plate-3d-v/0100.png}
+\caption{Трёхмерное распределение поля скоростей в пластине. 100-й временной слой. Цветом изображен модуль скорости.}
+\end{figure}
+
+\begin{figure}[htp]
+\centering
+\includegraphics[width=0.6\textwidth]{png/strike-test/plate-3d-v/0120.png}
+\caption{Трёхмерное распределение поля скоростей в пластине. 120-й временной слой. Цветом изображен модуль скорости.}
+\end{figure}
+
+\begin{figure}[htp]
+\centering
+\includegraphics[width=0.6\textwidth]{png/strike-test/plate-3d-v/0140.png}
+\caption{Трёхмерное распределение поля скоростей в пластине. 140-й временной слой. Цветом изображен модуль скорости.}
+\end{figure}
+
+\begin{figure}[htp]
+\centering
+\includegraphics[width=0.6\textwidth]{png/strike-test/plate-3d-v/0160.png}
+\caption{Трёхмерное распределение поля скоростей в пластине. 160-й временной слой. Цветом изображен модуль скорости.}
+\end{figure}
+
+\begin{figure}[htp]
+\centering
+\includegraphics[width=0.6\textwidth]{png/strike-test/plate-3d-v/0180.png}
+\caption{Трёхмерное распределение поля скоростей в пластине. 180-й временной слой. Цветом изображен модуль скорости.}
+\end{figure}
+
+\begin{figure}[htp]
+\centering
+\includegraphics[width=0.6\textwidth]{png/strike-test/plate-3d-v/0200.png}
+\caption{Трёхмерное распределение поля скоростей в пластине. 200-й временной слой. Цветом изображен модуль скорости.}
+\label{pic:striker_test_plate_200}
 \end{figure}
 
 \clearpage
