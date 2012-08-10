@@ -384,7 +384,7 @@ q_x^2 + q_y^2 + q_z^2 = 1.
 \end{equation}
 Уравнения \ref{matrix_equation_generalized}, \ref{matrix_equation_generalized_short} и \ref{matrix_generalized} верны и в случае произвольных базисов, в том числе неортогональных, но соотношение \ref{good_basis_condition} в этом случае уже не выполняется.
 
-\subsubsection{Исследование матрицы $\mathbf{A}_q$ в случае линейной упругости}
+\subsubsection{Исследование матрицы общего вида $\mathbf{A}_q$ в случае линейной упругости}
 
 Рассмотрим частный, но важный случай линейно упругого тела. Он представляет отдельный интерес, так как позволяет получить все необходимые соотношения в аналитическом виде явным образом, и таким образом исследовать, как отражается смена базиса на полной схеме построения численного метода. Кроме того, для большинства рассмотренных моделей вид матриц $\mathbf A_{x_i}$ совпадает с их видом для линейно упругого тела.
 
@@ -465,6 +465,161 @@ q_x^2 + q_y^2 + q_z^2 = 1.
 
 \clearpage
 \newpage
+
+\subsection{Свойства тензора напряжений}
+
+\subsubsection{Нормальные и касательные напряжения}
+
+Вектор напряжения $\mathbf{T}$, действующий на произвольную площадку, заданную нормалью $\mathbf n$, имеет вид
+\begin{eqnarray}
+\mathbf{T}^{(\mathbf n)}= \boldsymbol{\sigma}\cdot\mathbf n.
+\end{eqnarray}
+
+Нормальная часть напряжения очевидно равняется скалярному произведению вектора напряжения и нормали к площадке. Выражая через компоненты тензора напряжений и компоненты вектора нормали получаем
+\begin{eqnarray}
+\sigma_\mathrm{n} &= \mathbf{T}^{(\mathbf{n})}\cdot \mathbf{n} \\
+&=T^{(\mathbf n)}_i n_i \\
+&=\sigma_{ij}n_i n_j.
+\end{eqnarray}
+
+Величина касательного напряжения к данной площадке выражается через полный вектор напряжения и нормальную составляющую напряжения
+\begin{eqnarray}
+\tau_\mathrm{n} &=\sqrt{ \left( T^{(\mathbf n)} \right)^2-\sigma_\mathrm{n}^2} \\
+&= \sqrt{T_i^{(\mathbf n)}T_i^{(\mathbf n)}-\sigma_\mathrm{n}^2},
+\end{eqnarray}
+
+где
+\begin{eqnarray}
+\left( T^{(\mathbf n)} \right)^2 = T_i^{(\mathbf n)} T_i^{(\mathbf n)} = \left( \sigma_{ij} n_j \right) \left(\sigma_{ik} n_k \right) = \sigma_{ij} \sigma_{ik} n_j n_k.
+\end{eqnarray}
+
+
+\subsubsection{Главные напряжения и инварианты тензора напряжений}
+
+В любой точке напряженно-деформированного тела есть три направления, называемые главными. Если воспринимать вектор главного направления $\mathbf{n}$ как вектор нормали к некоторой площадке, то действующий на данную площадку вектор напряжения оказывается перпендикулярен к ней. Таким образом, вектор напряжения оказывается параллельным вектору главного направления, а касательные напряжения к данной площадке отсутствуют. Таким образом, три главных направления и соответствующие им три главных напряжения составляют базис, в котором тензор напряжений имеет диагональный вид.
+
+\begin{eqnarray}
+\sigma_{ij} = \begin{bmatrix} \sigma_1 & 0 & 0\\ 
+0 & \sigma_2 & 0\\ 
+0 & 0 & \sigma_3 \end{bmatrix}.
+\end{eqnarray}
+
+Здесь $\sigma_1, \sigma_2, \sigma_3$ - соответственно три главных напряжения.
+
+Если вектор напряжения параллелен нормали, то получаем:
+
+\begin{eqnarray}
+\mathbf{T}^{(\mathbf{n})} = \lambda \mathbf{n}= \mathbf{\sigma}_\mathrm n \mathbf{n} \\
+T_i^{(n)}=\sigma_{ij}n_j\,\! and n_i=\delta_{ij}n_j \\
+\sigma_{ij}n_j &=\lambda n_i \\ 
+\sigma_{ij}n_j -\lambda n_i &=0 \\ 
+\left(\sigma_{ij}- \lambda\delta_{ij} \right)n_j &=0.
+\end{eqnarray}
+
+Решение полученной системы
+\begin{eqnarray}
+det|\sigma_{ij}- \lambda\delta_{ij}|=det \begin{vmatrix} \sigma_{11} - \lambda & \sigma_{12} & \sigma_{13} \\ \sigma_{21} & \sigma_{22} - \lambda & \sigma_{23} \\ \sigma_{31}& \sigma_{32} & \sigma_{33} - \lambda \\ \end{vmatrix}=0
+\end{eqnarray}
+
+дает характеристическое уравнение
+\begin{eqnarray}
+det|\sigma_{ij}- \lambda\delta_{ij}| = -\lambda^3 + I_1\lambda^2 - I_2\lambda + I_3=0,
+\end{eqnarray}
+
+где
+
+\begin{eqnarray}
+I_1 &= \sigma_{11}+\sigma_{22}+\sigma_{33} = \sigma_{kk} \\ 
+I_2 &= det\begin{vmatrix} \sigma_{22} & \sigma_{23} \\ \sigma_{32} & \sigma_{33} \\ \end{vmatrix} + det\begin{vmatrix} \sigma_{11} & \sigma_{13} \\ \sigma_{31} & \sigma_{33} \\ \end{vmatrix} + det\begin{vmatrix} \sigma_{11} & \sigma_{12} \\ \sigma_{21} & \sigma_{22} \\ \end{vmatrix} \\ 
+&= \sigma_{11}\sigma_{22}+\sigma_{22}\sigma_{33}+\sigma_{11}\sigma_{33}-\sigma_{12}^2-\sigma_{23}^2-\sigma_{31}^2 \\ 
+&= \frac{1}{2}\left(\sigma_{ii}\sigma_{jj}-\sigma_{ij}\sigma_{ji}\right) \\ 
+I_3 &= \det(\sigma_{ij}) \\ 
+&= \sigma_{11}\sigma_{22}\sigma_{33}+2\sigma_{12}\sigma_{23}\sigma_{31}-\sigma_{12}^2\sigma_{33}-\sigma_{23}^2\sigma_{11}-\sigma_{31}^2\sigma_{22}
+\end{eqnarray}
+
+В силу симметрии тензора напряжений уравнение имеет три действительных корня $\lambda_i$. Полученные корни являются главными напряжениями:
+
+\begin{eqnarray}
+\sigma_1 = max \left( \lambda_1,\lambda_2,\lambda_3 \right) \\
+\sigma_3 = min \left( \lambda_1,\lambda_2,\lambda_3 \right) \\
+\sigma_2=I_1-\sigma_1-\sigma_3.
+\end{eqnarray}
+
+Из вида характеристического уравнения следует, что величины $I_1, I_2, I_3$ не зависят от того, в какой системе координат записан тензор напряжений $\sigma_{ij}$. Поэтому они называются инвариантами тензора напряжения. Через главные напряжения инварианты записываются в более простом виде:
+
+\begin{eqnarray}
+I_1 &= \sigma_{1}+\sigma_{2}+\sigma_{3} \\ 
+I_2 &= \sigma_{1}\sigma_{2}+\sigma_{2}\sigma_{3}+\sigma_{3}\sigma_{1} \\ 
+I_3 &= \sigma_{1}\sigma_{2}\sigma_{3}.
+\end{eqnarray}
+
+\subsubsection{Гидростатическая и девиаторная часть тензора}
+
+Тензор напряжений удобно представить в виде суммы двух тензоров
+\begin{eqnarray}
+\sigma_{ij}= p\delta_{ij} + s_{ij}
+\end{eqnarray}
+
+Здесь первый компонент представляет собой гидростатическую часть напряжения
+\begin{eqnarray}
+p=\frac{\sigma_{kk}}{3}=\frac{\sigma_{11}+\sigma_{22}+\sigma_{33}}{3}=\tfrac{1}{3}I_1
+\end{eqnarray}
+
+Этот компонент напряжения отвечает за сжатие тела и изменение его объема.
+
+Второй компонент - девиатор тензора напряжений - имеет вид
+\begin{eqnarray}
+s_{ij} &= \sigma_{ij} - \frac{\sigma_{kk}}{3}\delta_{ij}.
+\end{eqnarray}
+
+Девиатор отвечает за изменение формы тела без изменения объема.
+
+В матричной форме записи девиатор имеет вид
+\begin{eqnarray}
+\left[{\begin{matrix}
+s_{11} & s_{12} & s_{13} \\
+s_{21} & s_{22} & s_{23} \\
+s_{31} & s_{32} & s_{33} \\
+\end{matrix}}\right]
+&=\left[{\begin{matrix}
+\sigma_{11} & \sigma_{12} & \sigma_{13} \\
+\sigma_{21} & \sigma_{22} & \sigma_{23} \\
+\sigma_{31} & \sigma_{32} & \sigma_{33} \\
+\end{matrix}}\right]-\left[{\begin{matrix}
+p & 0 & 0 \\
+0 & p & 0 \\
+0 & 0 & p \\
+\end{matrix}}\right] \\
+&=\left[{\begin{matrix}
+\sigma_{11}-p & \sigma_{12} & \sigma_{13} \\
+\sigma_{21} & \sigma_{22}-p & \sigma_{23} \\
+\sigma_{31} & \sigma_{32} & \sigma_{33}-p \\
+\end{matrix}}\right]. \\
+\end{eqnarray}
+
+
+\subsubsection{Инварианты девиатора}
+
+Девиатор тензора напряжений имеет главные напряжения, главные направления и инварианты точно так же, как сам тензор напряжения. Процедура их поиска полностью аналогична. Характеристическое уравнение имеет вид
+\begin{eqnarray}
+det|s_{ij}- \lambda\delta_{ij}| = \lambda^3-J_1\lambda^2-J_2\lambda-J_3=0,
+\end{eqnarray}
+где $J_1, J_2, J_3$ - инварианты девиатора, которые могут быть записаны через компоненты и собственные значения исходного тензора напряжений $\sigma_{ij}$ и $\sigma_1, \sigma_2, \sigma_3$, или через компоненты и собственные значения девиатора $s_{ij}$ и $s_1, s_2, s_3$:
+
+\begin{eqnarray}
+J_1 &= s_{kk}=0 \\ 
+J_2 &= \frac{1}{2}s_{ij}s_{ji} \\ &= -s_1s_2 - s_2s_3 - s_3s_1 \\ 
+&= \tfrac{1}{6}\left[(\sigma_{11} - \sigma_{22})^2 + (\sigma_{22} - \sigma_{33})^2 + (\sigma_{33} - \sigma_{11})^2 \right ] + \sigma_{12}^2 + \sigma_{23}^2 + \sigma_{31}^2 \\ 
+&= \tfrac{1}{6}\left[(\sigma_1 - \sigma_2)^2 + (\sigma_2 - \sigma_3)^2 + (\sigma_3 - \sigma_1)^2 \right ] \\ &= \tfrac{1}{3}I_1^2-I_2 \\ 
+J_3 &= \det(s_{ij}) \\ 
+&= \tfrac{1}{3}s_{ij}s_{jk}s_{ki} \\ 
+&= s_1s_2s_3 \\ 
+&= \tfrac{2}{27}I_1^3 - \tfrac{1}{3}I_1 I_2 + I_3.
+\end{eqnarray}
+
+\clearpage
+\newpage
+
 
 \subsection{Модели разрушения}
 
