@@ -11,16 +11,18 @@
 \usepackage{cite}
 \usepackage{enumerate}
 \usepackage{float}
-\usepackage[top=1.5cm,bottom=1.5cm,left=2.5cm,right=1.5cm]{geometry}
+\usepackage[top=2.0cm,bottom=2.0cm,left=3.0cm,right=1.5cm]{geometry}
 \usepackage[unicode]{hyperref}
 \usepackage{graphicx}
 \usepackage{color}
 \usepackage[colorinlistoftodos]{todonotes}
-\usepackage[format=hang, labelsep=period, margin=10pt, figurename=Рис.]{caption}
+\usepackage[format=hang, labelsep=none, margin=10pt, figurename=Рисунок]{caption}
+\DeclareCaptionLabelSeparator{gost}{~---~}
+\captionsetup{labelsep=gost}
 \usepackage{listings}
 \usepackage{subcaption}
 %\usepackage{showkeys}
-\usepackage[onehalfspacing]{setspace}
+\usepackage[onehalfspacing, nodisplayskipstretch]{setspace}
 \usepackage{verbatim}
 
 \hyphenation{объёмом}
@@ -58,6 +60,9 @@
 }
 \renewcommand\lstlistingname{Листинг}
 \renewcommand\lstlistlistingname{Листинги}
+
+\renewcommand{\thesubfigure}{\asbuk{subfigure}}
+
 \newcommand{\itodo}{\todo[inline]}
 \lstloadlanguages{C++}
 \DeclareCaptionFont{blue}{\color{blue}} 
