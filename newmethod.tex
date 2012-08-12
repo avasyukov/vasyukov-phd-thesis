@@ -22,9 +22,9 @@ q = \frac{\min(h)}{h_*},
 
 где $h_*$ -- заданная желаемая мелкость сетки, а $\min(h)$ -- минимальная высота в сетке, фактически выданной генератором.
 
-Для идеальной сетки $q = 1$. В случае не слишком больших отклонений от единицы сетку можно считать "достаточно хорошей" для расчёта. Однако, как видно из \ref{tbl:mesh-stats-summary}, на практике даже для простейшей геометрии $q$ находится в диапазоне $0.00065 \le q \le 0.126$. Это приводит к неоправданному падению шага по времени на 1-3 порядка и, соответственно, к необоснованному росту требуемого объема вычислений также на 1-3 порядка. Приведенные гистограммы распределения высот тетраэдров в полученных сетках показывают, что проблема не связана с наличием единичных вырожденных тетраэдров, а носит систематический характер. Эксперименты с объектами более сложной геометрии показывают еще худшие результаты по качеству сетки.
+Для идеальной сетки $q = 1$. В случае не слишком больших отклонений от единицы сетку можно считать "достаточно хорошей" для расчёта. Однако, как видно из таблицы \ref{tbl:mesh-stats-summary}, на практике даже для простейшей геометрии $q$ находится в диапазоне $0.00065 \le q \le 0.126$. Это приводит к неоправданному падению шага по времени на 1-3 порядка и, соответственно, к необоснованному росту требуемого объема вычислений. Приведенные гистограммы распределения высот тетраэдров в полученных сетках (рис. \ref{pic:mesh_quality}) показывают, что проблема не связана с наличием единичных вырожденных тетраэдров, а носит систематический характер.
 
-Причиной такого низкого качества сеток является тот факт, что все существующие генераторы сеток ориентированы на построение сеток для метода конечных элементов. Для МКЭ критерии качества сетки совершенно иные -- размеры тетраэдров не важны, для эффективной работы метода требуется, чтобы их углы были максимально близки к правильным, а линейные размеры при этом могут быть любыми. Соответственно, ориентированные на МКЭ алгоритмы построения сеток оказываются неэффективными с точки зрения сеточно-характеристического метода.
+Причиной такого низкого качества сеток является тот факт, что все существующие генераторы сеток ориентированы на построение сеток для метода конечных элементов. Для МКЭ критерии качества сетки совершенно иные -- для эффективной работы метода требуется, чтобы их углы были максимально близки к правильным, а линейные размеры при этом могут быть любыми. Соответственно, ориентированные на МКЭ алгоритмы построения сеток оказываются неэффективными с точки зрения сеточно-характеристического метода.
 
 Очевидным способом решения данной проблемы может быть разработка алгоритмов построения сеток, ориентированных на улучшения качества в терминах сеточно-характеристического метода. Однако в данной работе предлагается другой подход -- модификация метода для обеспечения эффективной работы на сетке низкого качества. Данный подход, как будет рассмотрено ниже, может применяться не только для решения проблемы малого шага по времени из-за низкого качества изначальной сетки, но и в случае деградации шага по времени из-за вырождения сетки в зоне больших деформаций.
 
@@ -32,7 +32,7 @@ q = \frac{\min(h)}{h_*},
 \centering
 \begin{tabular}{|c|c|c|c|}
 \hline
-Генератор & Заданное $H$ & Полученное $\min(H)$ & Полученное $\max(H)$ \\
+Генератор & Заданное $H$ & $\min(H)$ & $\max(H)$ \\
 \hline
 gmsh & 0.25 & 0.000845531 & 0.307492 \\
 tetgen & 0.25 & 0.0315793 & 0.279029 \\
@@ -46,27 +46,28 @@ Ani3D + косметика & 0.25 & 0.000162557 & 3.7205 \\
 
 
 \begin{figure}[htp]
+\begin{subfigure}[b]{0.5\textwidth}
 \centering
-\includegraphics[width=0.8\textwidth]{png/gmsh-stats.png}
-\caption{Сетка в кубе, созданная с помощью gmsh. Распределение тетраэдров по размеру.}
-\end{figure}
-
-\begin{figure}[htp]
+\includegraphics[width=\textwidth]{png/gmsh-stats.png}
+\caption{Генератор gmsh.}
+\end{subfigure}
+\begin{subfigure}[b]{0.5\textwidth}
 \centering
-\includegraphics[width=0.8\textwidth]{png/tetgen-stats.png}
-\caption{Сетка в кубе, созданная с помощью tetgen. Распределение тетраэдров по размеру.}
-\end{figure}
-
-\begin{figure}[htp]
+\includegraphics[width=\textwidth]{png/tetgen-stats.png}
+\caption{Генератор tetgen.}
+\end{subfigure}
+\begin{subfigure}[b]{0.5\textwidth}
 \centering
-\includegraphics[width=0.8\textwidth]{png/ani3d-stats.png}
-\caption{Сетка в кубе, созданная с помощью Ani3D. Распределение тетраэдров по размеру.}
-\end{figure}
-
-\begin{figure}[htp]
+\includegraphics[width=\textwidth]{png/ani3d-stats.png}
+\caption{Генератор Ani3D.}
+\end{subfigure}
+\begin{subfigure}[b]{0.5\textwidth}
 \centering
-\includegraphics[width=0.8\textwidth]{png/ani3d-improved-stats.png}
-\caption{Сетка в кубе, созданная с помощью Ani3D с применением сеточной косметики. Распределение тетраэдров по размеру.}
+\includegraphics[width=\textwidth]{png/ani3d-improved-stats.png}
+\caption{Генератор Ani3D с сеточной косметикой.}
+\end{subfigure}
+\caption{Сетка в кубе, созданная различными генераторами. Распределение тетраэдров по размеру.}
+\label{pic:mesh_quality}
 \end{figure}
 
 \clearpage
@@ -185,36 +186,41 @@ k \le \sigma \le k+1.
 
 \subsubsection{Тестирование метода}
 
-На рис. \todo{N} приведены результаты тестирования описанной схемы. Рассматривалась задача распада разрыва. Использовалась равномерная сетка по пространству. Приведены графики для расчетов с $\lambda \tau / h = 1.0$ (классический шаблон "уголок" с курантовским шагом) и $\lambda \tau / h = 1.5$ (описанная выше схема).
+На рис. \ref{pic:scheme_1d_test} приведены результаты тестирования описанной схемы. Рассматривалась задача распада разрыва. Использовалась равномерная сетка по пространству. Приведены графики для расчетов с $\lambda \tau / h = 1.0$ (классический шаблон "уголок" с курантовским шагом) и $\lambda \tau / h = 1.5$ (описанная выше схема).
 
 \begin{figure}[htp]
+\begin{subfigure}[b]{0.5\textwidth}
 \centering
-\includegraphics[width=0.6\textwidth]{png/big-sigma-test-results-1d/snap-1.png}
+\includegraphics[width=0.8\textwidth]{png/big-sigma-test-results-1d/snap-1.png}
 \caption{1-ый шаг по времени.}
-\end{figure}
-
-\begin{figure}[htp]
+\end{subfigure}
+\begin{subfigure}[b]{0.5\textwidth}
 \centering
-\includegraphics[width=0.6\textwidth]{png/big-sigma-test-results-1d/snap-3.png}
+\includegraphics[width=0.8\textwidth]{png/big-sigma-test-results-1d/snap-3.png}
 \caption{3-ий шаг по времени.}
-\end{figure}
-
-\begin{figure}[htp]
+\end{subfigure}
+\begin{subfigure}[b]{0.5\textwidth}
 \centering
-\includegraphics[width=0.6\textwidth]{png/big-sigma-test-results-1d/snap-6.png}
+\includegraphics[width=0.8\textwidth]{png/big-sigma-test-results-1d/snap-6.png}
 \caption{6-ой шаг по времени.}
-\end{figure}
-
-\begin{figure}[htp]
+\end{subfigure}
+\begin{subfigure}[b]{0.5\textwidth}
 \centering
-\includegraphics[width=0.6\textwidth]{png/big-sigma-test-results-1d/snap-9.png}
+\includegraphics[width=0.8\textwidth]{png/big-sigma-test-results-1d/snap-9.png}
 \caption{9-ый шаг по времени.}
-\end{figure}
-
-\begin{figure}[htp]
+\end{subfigure}
+\begin{subfigure}[b]{0.5\textwidth}
 \centering
-\includegraphics[width=0.6\textwidth]{png/big-sigma-test-results-1d/snap-12.png}
+\includegraphics[width=0.8\textwidth]{png/big-sigma-test-results-1d/snap-12.png}
 \caption{12-ый шаг по времени.}
+\end{subfigure}
+\begin{subfigure}[b]{0.5\textwidth}
+\centering
+\includegraphics[width=0.8\textwidth]{png/big-sigma-test-results-1d/snap-15.png}
+\caption{15-ый шаг по времени.}
+\end{subfigure}
+\caption{Тестирование одномерной схемы с шагом $\lambda \tau / h = 1.5$.}
+\label{pic:scheme_1d_test}
 \end{figure}
 
 \clearpage
