@@ -3,7 +3,6 @@ for (int i = 0; i < zones_info.size(); i++)
 		for (int j = 0; j < zones_info.size(); j++)
 			if (local_numbers[i][j].size())
 			{
-				*logger << "Sending nodes from zone " << j << " to zone " < i;
 				reqs.push_back(
 					MPI::COMM_WORLD.Isend(
 						&mesh_set->get_mesh_by_zone_num(j)->nodes[0],

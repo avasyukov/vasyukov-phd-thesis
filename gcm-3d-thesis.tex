@@ -24,6 +24,8 @@
 %\usepackage{showkeys}
 \usepackage[onehalfspacing, nodisplayskipstretch]{setspace}
 \usepackage{verbatim}
+\usepackage{array}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 
 \hyphenation{объёмом}
 \hyphenpenalty=2000
@@ -78,7 +80,7 @@
 %	font={bf,footnotesize}
 %}
 \numberwithin{equation}{section}
-\setcounter{secnumdepth}{5} % глубина нумеруемых разделов
+\setcounter{secnumdepth}{3} % глубина нумеруемых разделов
 \setcounter{tocdepth}{2} % глубина оглавления
 \begin{document}
 \listoftodos
