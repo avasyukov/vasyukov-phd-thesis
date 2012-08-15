@@ -28,7 +28,9 @@ e_{ij}=\frac{1}{2}(\nabla_j v_i+\nabla_i v_j).
 
 Для замыкания системы уравнений \ref{initial_equations} её необходимо дополнить
 уравнением состояния, определяющим зависимость плотности от напряжений:
-$$\rho=\rho_0e^{\frac{p}{K}},$$
+\begin{equation}
+\rho=\rho_0e^{\frac{p}{K}},
+\end{equation}
 где $p=-\frac{1}{3}\sum\sigma_{kk}$ -- давление, $K=\lambda+\frac{2}{3}\mu$ --
 коэффициент всестороннего сжатия, $\lambda$ и $\mu$ -- параметры Ламе.
 
@@ -320,41 +322,41 @@ F(\sigma_{kl},\sigma_{kl},K) = \frac{(\sigma_{kl},\sigma_{kl})^{1/2}-(2K)^{1/2}}
 \mathbf{A}_y\frac{\partial\vec{u}}{\partial{y}} + 
 \mathbf{A}_z\frac{\partial\vec{u}}{\partial{z}} =
 \nonumber\\
-\frac{\partial\vec{u}}{\partial{t}} + 
+= \frac{\partial\vec{u}}{\partial{t}} + 
 \mathbf{A}_x (\frac{\partial\vec{u}}{\partial{\xi}}\frac{\partial{\xi}}{\partial{x}} + 
 \frac{\partial\vec{u}}{\partial{\eta}}\frac{\partial{\eta}}{\partial{x}} + 
 \frac{\partial\vec{u}}{\partial{\zeta}}\frac{\partial{\zeta}}{\partial{x}} ) + 
 \nonumber\\
-\mathbf{A}_y (\frac{\partial\vec{u}}{\partial{\xi}}\frac{\partial{\xi}}{\partial{y}} + 
++ \mathbf{A}_y (\frac{\partial\vec{u}}{\partial{\xi}}\frac{\partial{\xi}}{\partial{y}} + 
 \frac{\partial\vec{u}}{\partial{\eta}}\frac{\partial{\eta}}{\partial{y}} + 
 \frac{\partial\vec{u}}{\partial{\zeta}}\frac{\partial{\zeta}}{\partial{y}} ) + 
 \nonumber\\
-\mathbf{A}_z (\frac{\partial\vec{u}}{\partial{\xi}}\frac{\partial{\xi}}{\partial{z}} + 
++ \mathbf{A}_z (\frac{\partial\vec{u}}{\partial{\xi}}\frac{\partial{\xi}}{\partial{z}} + 
 \frac{\partial\vec{u}}{\partial{\eta}}\frac{\partial{\eta}}{\partial{z}} + 
 \frac{\partial\vec{u}}{\partial{\zeta}}\frac{\partial{\zeta}}{\partial{z}} ) = 
 \nonumber\\
-\frac{\partial\vec{u}}{\partial{t}} + 
+= \frac{\partial\vec{u}}{\partial{t}} + 
 ( \frac{\partial{\xi}}{\partial{x}} \mathbf{A}_x  + 
 \frac{\partial{\xi}}{\partial{y}} \mathbf{A}_y + 
 \frac{\partial{\xi}}{\partial{z}} \mathbf{A}_z ) \frac{\partial\vec{u}}{\partial{\xi}} + 
 \nonumber\\
-( \frac{\partial{\eta}}{\partial{x}} \mathbf{A}_x + 
++ ( \frac{\partial{\eta}}{\partial{x}} \mathbf{A}_x + 
 \frac{\partial{\eta}}{\partial{y}} \mathbf{A}_y + 
 \frac{\partial{\eta}}{\partial{z}} \mathbf{A}_z ) \frac{\partial\vec{u}}{\partial{\eta}} + 
 \nonumber\\
-( \frac{\partial{\zeta}}{\partial{x}} \mathbf{A}_x  + 
++ ( \frac{\partial{\zeta}}{\partial{x}} \mathbf{A}_x  + 
 \frac{\partial{\zeta}}{\partial{y}} \mathbf{A}_y + 
 \frac{\partial{\zeta}}{\partial{z}} \mathbf{A}_z ) \frac{\partial\vec{u}}{\partial{\zeta}}.
 \end{eqnarray}
 
 Таким образом, уравнение \ref{matrix_equation} после замены базиса имеет вид:
-\begin{equation}
+\begin{eqnarray}
 \label{matrix_equation_generalized}
 \frac{\partial\vec{u}}{\partial{t}} + 
 ( \xi_x \mathbf{A}_x  + \xi_y \mathbf{A}_y + \xi_z \mathbf{A}_z ) \frac{\partial\vec{u}}{\partial{\xi}} + 
-( \eta_x \mathbf{A}_x + \eta_y \mathbf{A}_y + \eta_z \mathbf{A}_z ) \frac{\partial\vec{u}}{\partial{\eta}} + 
-( \zeta_x \mathbf{A}_x  + \zeta_y \mathbf{A}_y + \zeta_z \mathbf{A}_z ) \frac{\partial\vec{u}}{\partial{\zeta}} = \vec f.
-\end{equation}
+( \eta_x \mathbf{A}_x + \eta_y \mathbf{A}_y + \eta_z \mathbf{A}_z ) \frac{\partial\vec{u}}{\partial{\eta}} + \nonumber\\
++ ( \zeta_x \mathbf{A}_x  + \zeta_y \mathbf{A}_y + \zeta_z \mathbf{A}_z ) \frac{\partial\vec{u}}{\partial{\zeta}} = \vec f.
+\end{eqnarray}
 
 Или, после замены обозначений:
 \begin{equation}
@@ -379,11 +381,10 @@ q_x^2 + q_y^2 + q_z^2 = 1.
 
 Рассмотрим частный, но важный случай линейно упругого тела. Он представляет отдельный интерес, так как позволяет получить все необходимые соотношения в аналитическом виде явным образом, и таким образом исследовать, как отражается смена базиса на полной схеме построения численного метода. Кроме того, для большинства рассмотренных моделей вид матриц $\mathbf A_{x_i}$ совпадает с их видом для линейно упругого тела.
 
-В случае линейной упругости в обобщенную матрицу \ref{matrix_generalized} входят матрицы $\mathbf{A}_x, \mathbf{A}_y, \mathbf{A}_z$, явный вид которых приведен в разделе \ref{elastic_matrixes}. Получаем следующий вид обобщенной матрицы (с точностью до знака):
+В случае линейной упругости в обобщенную матрицу \ref{matrix_generalized} входят матрицы $\mathbf{A}_x, \mathbf{A}_y, \mathbf{A}_z$, явный вид которых приведен в разделе \ref{elastic_matrixes}. Получаем следующий вид обобщенной матрицы $A_q$ (с точностью до знака):
 
 \begin{equation}
 \label{matrix_generalized_elastic}
-- \mathbf{A}_q =
 \left( \begin{array}{cccccccccccc}
 0 & 0 & 0 & \frac 1 \rho q_x & \frac 1 \rho q_y & \frac 1 \rho q_z & 0 & 0 & 0 \\ 
 0 & 0 & 0 & 0 & \frac 1 \rho q_x & 0 & \frac 1 \rho q_y & \frac 1 \rho q_z & 0 \\ 
@@ -468,15 +469,12 @@ q_x^2 + q_y^2 + q_z^2 = 1.
 
 Нормальная часть напряжения очевидно равняется скалярному произведению вектора напряжения и нормали к площадке. Выражая через компоненты тензора напряжений и компоненты вектора нормали получаем
 \begin{eqnarray}
-\sigma_\mathrm{n} &= \mathbf{T}^{(\mathbf{n})}\cdot \mathbf{n} \\
-&=T^{(\mathbf n)}_i n_i \\
-&=\sigma_{ij}n_i n_j.
+\sigma_\mathrm{n} = \mathbf{T}^{(\mathbf{n})}\cdot \mathbf{n} = T^{(\mathbf n)}_i n_i = \sigma_{ij}n_i n_j.
 \end{eqnarray}
 
 Величина касательного напряжения к данной площадке выражается через полный вектор напряжения и нормальную составляющую напряжения
 \begin{eqnarray}
-\tau_\mathrm{n} &=\sqrt{ \left( T^{(\mathbf n)} \right)^2-\sigma_\mathrm{n}^2} \\
-&= \sqrt{T_i^{(\mathbf n)}T_i^{(\mathbf n)}-\sigma_\mathrm{n}^2},
+\tau_\mathrm{n} = \sqrt{ \left( T^{(\mathbf n)} \right)^2-\sigma_\mathrm{n}^2} = \sqrt{T_i^{(\mathbf n)}T_i^{(\mathbf n)}-\sigma_\mathrm{n}^2},
 \end{eqnarray}
 
 где
@@ -499,11 +497,11 @@ q_x^2 + q_y^2 + q_z^2 = 1.
 
 Если вектор напряжения параллелен нормали, то получаем:
 \begin{eqnarray}
-\mathbf{T}^{(\mathbf{n})} = \lambda \mathbf{n}= \mathbf{\sigma}_\mathrm n \mathbf{n} \\
-T_i^{(n)}=\sigma_{ij}n_j\,\! and n_i=\delta_{ij}n_j \\
-\sigma_{ij}n_j &=\lambda n_i \\ 
-\sigma_{ij}n_j -\lambda n_i &=0 \\ 
-\left(\sigma_{ij}- \lambda\delta_{ij} \right)n_j &=0.
+\mathbf{T}^{(\mathbf{n})} = \lambda \mathbf{n}= \mathbf{\sigma}_\mathrm n \mathbf{n} \nonumber\\
+T_i^{(n)} = \sigma_{ij}n_j\,\! and n_i=\delta_{ij}n_j \nonumber\\
+\sigma_{ij}n_j = \lambda n_i \nonumber\\ 
+\sigma_{ij}n_j - \lambda n_i = 0 \nonumber\\ 
+(\sigma_{ij} - \lambda\delta_{ij}) n_j = 0.
 \end{eqnarray}
 
 Решение полученной системы
@@ -518,26 +516,26 @@ det|\sigma_{ij}- \lambda\delta_{ij}| = -\lambda^3 + I_1\lambda^2 - I_2\lambda + 
 
 где
 \begin{eqnarray}
-I_1 &= \sigma_{11}+\sigma_{22}+\sigma_{33} = \sigma_{kk} \\ 
-I_2 &= det\begin{vmatrix} \sigma_{22} & \sigma_{23} \\ \sigma_{32} & \sigma_{33} \\ \end{vmatrix} + det\begin{vmatrix} \sigma_{11} & \sigma_{13} \\ \sigma_{31} & \sigma_{33} \\ \end{vmatrix} + det\begin{vmatrix} \sigma_{11} & \sigma_{12} \\ \sigma_{21} & \sigma_{22} \\ \end{vmatrix} \\ 
-&= \sigma_{11}\sigma_{22}+\sigma_{22}\sigma_{33}+\sigma_{11}\sigma_{33}-\sigma_{12}^2-\sigma_{23}^2-\sigma_{31}^2 \\ 
-&= \frac{1}{2}\left(\sigma_{ii}\sigma_{jj}-\sigma_{ij}\sigma_{ji}\right) \\ 
-I_3 &= \det(\sigma_{ij}) \\ 
-&= \sigma_{11}\sigma_{22}\sigma_{33}+2\sigma_{12}\sigma_{23}\sigma_{31}-\sigma_{12}^2\sigma_{33}-\sigma_{23}^2\sigma_{11}-\sigma_{31}^2\sigma_{22}
+I_1 = \sigma_{11}+\sigma_{22}+\sigma_{33} = \sigma_{kk}, \nonumber\\ 
+I_2 = det\begin{vmatrix} \sigma_{22} & \sigma_{23} \\ \sigma_{32} & \sigma_{33} \\ \end{vmatrix} + det\begin{vmatrix} \sigma_{11} & \sigma_{13} \\ \sigma_{31} & \sigma_{33} \\ \end{vmatrix} + det\begin{vmatrix} \sigma_{11} & \sigma_{12} \\ \sigma_{21} & \sigma_{22} \\ \end{vmatrix} = \nonumber\\ 
+= \sigma_{11}\sigma_{22}+\sigma_{22}\sigma_{33}+\sigma_{11}\sigma_{33}-\sigma_{12}^2-\sigma_{23}^2-\sigma_{31}^2 = \nonumber\\ 
+= \frac{1}{2}\left(\sigma_{ii}\sigma_{jj}-\sigma_{ij}\sigma_{ji}\right), \nonumber\\ 
+I_3 = \det(\sigma_{ij}) = \nonumber\\ 
+= \sigma_{11}\sigma_{22}\sigma_{33}+2\sigma_{12}\sigma_{23}\sigma_{31}-\sigma_{12}^2\sigma_{33}-\sigma_{23}^2\sigma_{11}-\sigma_{31}^2\sigma_{22}
 \end{eqnarray}
 
 В силу симметрии тензора напряжений уравнение имеет три действительных корня $\lambda_i$. Полученные корни являются главными напряжениями:
 \begin{eqnarray}
-\sigma_1 = max \left( \lambda_1,\lambda_2,\lambda_3 \right) \\
-\sigma_3 = min \left( \lambda_1,\lambda_2,\lambda_3 \right) \\
+\sigma_1 = max \left( \lambda_1,\lambda_2,\lambda_3 \right), \nonumber\\
+\sigma_3 = min \left( \lambda_1,\lambda_2,\lambda_3 \right), \nonumber\\
 \sigma_2=I_1-\sigma_1-\sigma_3.
 \end{eqnarray}
 
 Из вида характеристического уравнения следует, что величины $I_1, I_2, I_3$ не зависят от того, в какой системе координат записан тензор напряжений $\sigma_{ij}$. Поэтому они называются инвариантами тензора напряжения. Через главные напряжения инварианты записываются в более простом виде:
 \begin{eqnarray}
-I_1 &= \sigma_{1}+\sigma_{2}+\sigma_{3} \\ 
-I_2 &= \sigma_{1}\sigma_{2}+\sigma_{2}\sigma_{3}+\sigma_{3}\sigma_{1} \\ 
-I_3 &= \sigma_{1}\sigma_{2}\sigma_{3}.
+I_1 = \sigma_{1}+\sigma_{2}+\sigma_{3}, \nonumber\\ 
+I_2 = \sigma_{1}\sigma_{2}+\sigma_{2}\sigma_{3}+\sigma_{3}\sigma_{1}, \nonumber\\ 
+I_3 = \sigma_{1}\sigma_{2}\sigma_{3}.
 \end{eqnarray}
 
 \subsubsection{Гидростатическая и девиаторная часть тензора}
@@ -576,12 +574,12 @@ s_{31} & s_{32} & s_{33} \\
 p & 0 & 0 \\
 0 & p & 0 \\
 0 & 0 & p \\
-\end{matrix}}\right] \\
+\end{matrix}}\right] = \nonumber\\
 &=\left[{\begin{matrix}
 \sigma_{11}-p & \sigma_{12} & \sigma_{13} \\
 \sigma_{21} & \sigma_{22}-p & \sigma_{23} \\
 \sigma_{31} & \sigma_{32} & \sigma_{33}-p \\
-\end{matrix}}\right]. \\
+\end{matrix}}\right].
 \end{eqnarray}
 
 
@@ -593,14 +591,11 @@ det|s_{ij}- \lambda\delta_{ij}| = \lambda^3-J_1\lambda^2-J_2\lambda-J_3=0,
 \end{eqnarray}
 где $J_1, J_2, J_3$ - инварианты девиатора, которые могут быть записаны через компоненты и собственные значения исходного тензора напряжений $\sigma_{ij}$ и $\sigma_1, \sigma_2, \sigma_3$, или через компоненты и собственные значения девиатора $s_{ij}$ и $s_1, s_2, s_3$:
 \begin{eqnarray}
-J_1 &= s_{kk}=0 \\ 
-J_2 &= \frac{1}{2}s_{ij}s_{ji} \\ &= -s_1s_2 - s_2s_3 - s_3s_1 \\ 
-&= \tfrac{1}{6}\left[(\sigma_{11} - \sigma_{22})^2 + (\sigma_{22} - \sigma_{33})^2 + (\sigma_{33} - \sigma_{11})^2 \right ] + \sigma_{12}^2 + \sigma_{23}^2 + \sigma_{31}^2 \\ 
-&= \tfrac{1}{6}\left[(\sigma_1 - \sigma_2)^2 + (\sigma_2 - \sigma_3)^2 + (\sigma_3 - \sigma_1)^2 \right ] \\ &= \tfrac{1}{3}I_1^2-I_2 \\ 
-J_3 &= \det(s_{ij}) \\ 
-&= \tfrac{1}{3}s_{ij}s_{jk}s_{ki} \\ 
-&= s_1s_2s_3 \\ 
-&= \tfrac{2}{27}I_1^3 - \tfrac{1}{3}I_1 I_2 + I_3.
+J_1 = s_{kk}=0, \nonumber\\ 
+J_2 = \frac{1}{2}s_{ij}s_{ji} = -s_1s_2 - s_2s_3 - s_3s_1 = \nonumber\\ 
+= \tfrac{1}{6}\left[(\sigma_{11} - \sigma_{22})^2 + (\sigma_{22} - \sigma_{33})^2 + (\sigma_{33} - \sigma_{11})^2 \right ] + \sigma_{12}^2 + \sigma_{23}^2 + \sigma_{31}^2 = \nonumber\\ 
+= \tfrac{1}{6}\left[(\sigma_1 - \sigma_2)^2 + (\sigma_2 - \sigma_3)^2 + (\sigma_3 - \sigma_1)^2 \right ] = \tfrac{1}{3}I_1^2-I_2, \nonumber\\ 
+J_3 = \det(s_{ij}) = \tfrac{1}{3}s_{ij}s_{jk}s_{ki} = s_1s_2s_3 = \tfrac{2}{27}I_1^3 - \tfrac{1}{3}I_1 I_2 + I_3.
 \end{eqnarray}
 
 \clearpage
@@ -659,8 +654,7 @@ J_2 \ge k^2,
 где $J_2$ - второй инвариант девиатора, а $k$ - предел текучести на сдвиг. Отсюда следует простая запись критерия Мизеса через компоненты тензора напряжений:
 \begin{eqnarray}
 \label{von_mises_criteria_components}
-k^2 \le J_2 = \frac{1}{2}s_{ij}s_{ji} \\
-= -s_1s_2 - s_2s_3 - s_3s_1 \\
+k^2 \le J_2 = \frac{1}{2}s_{ij}s_{ji} = -s_1s_2 - s_2s_3 - s_3s_1 = \nonumber\\
 = \frac{1}{6}[(\sigma_{xx} - \sigma_{yy})^2 + (\sigma_{yy} - \sigma_{zz})^2 + (\sigma_{xx} - \sigma_{zz})^2 ] + \sigma_{xy}^2 + \sigma_{yz}^2 + \sigma_{xz}^2.
 \end{eqnarray}
 
@@ -678,7 +672,7 @@ k^2 \le \frac{1}{6}[(\sigma_1 - \sigma_2)^2 + (\sigma_2 - \sigma_3)^2 + (\sigma_
 
 Предельная поверхность для критерия Мизеса имеет в пространстве главных напряжений вид цилиндра, равнонаклонённого к осям координат. Внутрь цилиндра вписана шестигранная призма, соответствующая критерию Треска. Максимальное различие критериев соответствует максимальному расстоянию между окружностью и вписанным в нее шестиугольником
 \begin{equation}
-\frac{\delta}{R} = \frac{R(1-cos(\pi/6))}{R} ~~ 0.134.
+\frac{\delta}{R} = \frac{R(1-cos(\pi/6))}{R} = 0.134.
 \end{equation}
 Таким образом, для решения технических задач критерии Мизеса и Треска можно считать эквивалентными. Принципиально, что критерии Мизеса и Треска зависят только от девиатора тензора напряжений, но не зависят от гидростатической части тензора.
 
@@ -700,13 +694,13 @@ k^2 \le \frac{1}{6}[(\sigma_1 - \sigma_2)^2 + (\sigma_2 - \sigma_3)^2 + (\sigma_
 
 При этом
 \begin{eqnarray}
-\sigma = \sigma_m - \tau_m \sin\phi, \\
+\sigma = \sigma_m - \tau_m \sin\phi, \nonumber\\
 \tau = \tau_m \cos\phi,
 \end{eqnarray}
 
 где
 \begin{eqnarray}
-\tau_m = \frac{\sigma_1-\sigma_3}{2} \\
+\tau_m = \frac{\sigma_1-\sigma_3}{2} \nonumber\\
 \sigma_m = \frac{\sigma_1+\sigma_3}{2} 
 \end{eqnarray}.
 
@@ -717,8 +711,8 @@ k^2 \le \frac{1}{6}[(\sigma_1 - \sigma_2)^2 + (\sigma_2 - \sigma_3)^2 + (\sigma_
 
 В трехмерном случае критерий имеет более сложный вид:
 \begin{eqnarray}
-  \pm\cfrac{\sigma_1 - \sigma_2}{2} & = \left[\cfrac{\sigma_1 + \sigma_2}{2}\right]\sin(\phi) + c\cos(\phi) \\
-  \pm\cfrac{\sigma_2 - \sigma_3}{2} & = \left[\cfrac{\sigma_2 + \sigma_3}{2}\right]\sin(\phi) + c\cos(\phi) \\
+  \pm\cfrac{\sigma_1 - \sigma_2}{2} & = \left[\cfrac{\sigma_1 + \sigma_2}{2}\right]\sin(\phi) + c\cos(\phi) \nonumber\\
+  \pm\cfrac{\sigma_2 - \sigma_3}{2} & = \left[\cfrac{\sigma_2 + \sigma_3}{2}\right]\sin(\phi) + c\cos(\phi) \nonumber\\
   \pm\cfrac{\sigma_3 - \sigma_1}{2} & = \left[\cfrac{\sigma_3 + \sigma_1}{2}\right]\sin(\phi) + c\cos(\phi)
 \end{eqnarray}.
 
@@ -757,19 +751,19 @@ k^2 \le \frac{1}{6}[(\sigma_1 - \sigma_2)^2 + (\sigma_2 - \sigma_3)^2 + (\sigma_
 
 В покомпонентной записи получаем:
 \begin{eqnarray}
-\sigma & = n_1^2 \sigma_{11} + n_2^2 \sigma_{22} + n_3^2 \sigma_{33} + 
-	2(n_1 n_2 \sigma_{12} + n_2 n_3 \sigma_{23} + n_3 n_1 \sigma_{31}) \\
-	\tau & = \sqrt{(n_1\sigma_{11} + n_2\sigma_{12} + n_3\sigma_{31})^2 +
-	(n_1\sigma_{12} + n_2\sigma_{22} + n_3\sigma_{23})^2 + 
-	(n_1\sigma_{31} + n_2\sigma_{23} + n_3\sigma_{33})^2 - \sigma^2}
+\sigma = n_1^2 \sigma_{11} + n_2^2 \sigma_{22} + n_3^2 \sigma_{33} + 
+	2(n_1 n_2 \sigma_{12} + n_2 n_3 \sigma_{23} + n_3 n_1 \sigma_{31}), \nonumber\\
+\tau  = ((n_1\sigma_{11} + n_2\sigma_{12} + n_3\sigma_{31})^2 +
+	(n_1\sigma_{12} + n_2\sigma_{22} + n_3\sigma_{23})^2 + \nonumber\\
+	+ (n_1\sigma_{31} + n_2\sigma_{23} + n_3\sigma_{33})^2 - \sigma^2)^{1/2}
 \end{eqnarray}
 
 Если базисные векторы $\mathbf{e}_i,~~ i=1,2,3$ сонаправлены с главными напряжениями $\sigma_1, \sigma_2, \sigma_3$, то получаем окончательное выражение в виде
 \begin{eqnarray}
-    \sigma & = n_1^2 \sigma_{1} + n_2^2 \sigma_{2} + n_3^2 \sigma_{3} \\
-    \tau & = \sqrt{(n_1\sigma_{1})^2 + (n_2\sigma_{2})^2 + (n_3\sigma_{3})^2 - \sigma^2} \\
-         & = \sqrt{n_1^2 n_2^2 (\sigma_1-\sigma_2)^2 + n_2^2 n_3^2 (\sigma_2-\sigma_3)^2 + 
-                   n_3^2 n_1^2 (\sigma_3 - \sigma_1)^2}
+    \sigma = n_1^2 \sigma_{1} + n_2^2 \sigma_{2} + n_3^2 \sigma_{3}, \nonumber\\
+    \tau = \sqrt{(n_1\sigma_{1})^2 + (n_2\sigma_{2})^2 + (n_3\sigma_{3})^2 - \sigma^2} = \nonumber\\
+         = \sqrt{n_1^2 n_2^2 (\sigma_1-\sigma_2)^2 + n_2^2 n_3^2 (\sigma_2-\sigma_3)^2 + 
+                 n_3^2 n_1^2 (\sigma_3 - \sigma_1)^2}
 \end{eqnarray}.
 
 
@@ -803,7 +797,7 @@ k^2 \le \frac{1}{6}[(\sigma_1 - \sigma_2)^2 + (\sigma_2 - \sigma_3)^2 + (\sigma_
 
 Из этих уравнений следует связь параметров $A, B$ с пределами прочности при одноосном сжатии и одноосном растяжении:
 \begin{eqnarray}
-A = \cfrac{2}{\sqrt{3}}~\left(\cfrac{\sigma_c~\sigma_t}{\sigma_c+\sigma_t}\right), \\
+A = \cfrac{2}{\sqrt{3}}~\left(\cfrac{\sigma_c~\sigma_t}{\sigma_c+\sigma_t}\right), \nonumber\\
 B = \cfrac{1}{\sqrt{3}}~\left(\cfrac{\sigma_t-\sigma_c}{\sigma_c+\sigma_t}\right).
 \end{eqnarray}
 
@@ -816,13 +810,13 @@ B = \cfrac{1}{\sqrt{3}}~\left(\cfrac{\sigma_t-\sigma_c}{\sigma_c+\sigma_t}\right
 
 Если поверхность Друкера-Прагера описывает поверхность Мора, то связь коэффициентов $A, B$ с коэффициентом когезии и углом внутреннего трения имеет вид
 \begin{eqnarray}
-A = \cfrac{6~c~\cos\phi}{\sqrt{3}(3+\sin\phi)} \\
+A = \cfrac{6~c~\cos\phi}{\sqrt{3}(3+\sin\phi)}, \nonumber\\
 B = \cfrac{2~\sin\phi}{\sqrt{3}(3+\sin\phi)}.
 \end{eqnarray}
 
 Если поверхность Друкера-Прагера вписана в поверхность Мора, то уравнения принимают вид
 \begin{eqnarray}
-A = \cfrac{6~c~\cos\phi}{\sqrt{3}(3-\sin\phi)} \\
+A = \cfrac{6~c~\cos\phi}{\sqrt{3}(3-\sin\phi)}, \nonumber\\
 B = \cfrac{2~\sin\phi}{\sqrt{3}(3-\sin\phi)}.
 \end{eqnarray}
 
