@@ -6,12 +6,12 @@
 \subsection{Уравнения механики деформируемого твёрдого тела}
 Для математического моделирования волновых процессов в деформируемом твёрдом
 теле используется система динамических уравнений \cite{novatsky,sedov} в виде
-\begin{eqnarray}
+\begin{align}
 \label{initial_equations}
-\rho\dot{v}_i=\nabla_j\sigma_{ij}+f_i & \textrm{(уравнения движения)}\nonumber\\
-\sigma_{ij}=q_{ijkl}\dot{\varepsilon}_{kl}+F_{ij} & \textrm{(реологические
+\rho\dot{v}_i &= \nabla_j\sigma_{ij}+f_i & \textrm{(уравнения движения)}\nonumber\\
+\sigma_{ij} &= q_{ijkl}\dot{\varepsilon}_{kl}+F_{ij} & \textrm{(реологические
 соотношения).}
-\end{eqnarray}
+\end{align}
 
 Здесь $\rho$ – плотность среды, $v_i$ – компоненты скорости смещения,
 $\sigma_{ij}$, $\varepsilon_{ij}$ -- компоненты тензоров напряжений и деформаций,
@@ -35,35 +35,35 @@ e_{ij}=\frac{1}{2}(\nabla_j v_i+\nabla_i v_j).
 коэффициент всестороннего сжатия, $\lambda$ и $\mu$ -- параметры Ламе.
 
 Параметры Ламе зависят от материала и связаны с модулем продольной упругости и коэффициентом Пуассона следующим образом:
-\begin{eqnarray}
+\begin{align}
 \label{lame_parameters}
-\lambda=\frac{E\nu}{(1+\nu)(1-2\nu)}
+\lambda &= \frac{E\nu}{(1+\nu)(1-2\nu)}
 \nonumber\\
-\mu=G=\frac{E}{2(1+\nu)}
-\end{eqnarray}
+\mu &= G=\frac{E}{2(1+\nu)}
+\end{align}
 Здесь $E$ -- модуль продольной упругости, $\nu$ -- коэффициент Пуассона, $G$ -- модуль сдвига.
 
 В простейшем случае линейной упругости $q_{ijkl}=\lambda\delta_{ij}\delta_{kl}+\mu(\delta_{ik}\delta_{jl}+\delta_{il}\delta_{jk})$ и $F_{ij}=0$. Тогда в приближении малых деформаций и в отсутствии внешних сил в трехмерном пространстве и декартовых координатах уравнения \ref{initial_equations} принимают вид
-\begin{eqnarray}
+\begin{align}
 \label{simple_equations}
-\frac{\partial{v_x}}{\partial{t}}=\frac{1}{\rho}(\frac{\partial{\sigma_{xx}}}{\partial{x}}+\frac{\partial{\sigma_{xy}}}{\partial{y}}+\frac{\partial{\sigma_{xz}}}{\partial{z}})
+\frac{\partial{v_x}}{\partial{t}}&=\frac{1}{\rho}(\frac{\partial{\sigma_{xx}}}{\partial{x}}+\frac{\partial{\sigma_{xy}}}{\partial{y}}+\frac{\partial{\sigma_{xz}}}{\partial{z}})
 \nonumber\\
-\frac{\partial{v_y}}{\partial{t}}=\frac{1}{\rho}(\frac{\partial{\sigma_{xy}}}{\partial{x}}+\frac{\partial{\sigma_{yy}}}{\partial{y}}+\frac{\partial{\sigma_{yz}}}{\partial{z}})
+\frac{\partial{v_y}}{\partial{t}}&=\frac{1}{\rho}(\frac{\partial{\sigma_{xy}}}{\partial{x}}+\frac{\partial{\sigma_{yy}}}{\partial{y}}+\frac{\partial{\sigma_{yz}}}{\partial{z}})
 \nonumber\\
-\frac{\partial{v_z}}{\partial{t}}=\frac{1}{\rho}(\frac{\partial{\sigma_{xz}}}{\partial{x}}+\frac{\partial{\sigma_{yz}}}{\partial{y}}+\frac{\partial{\sigma_{zz}}}{\partial{z}})
+\frac{\partial{v_z}}{\partial{t}}&=\frac{1}{\rho}(\frac{\partial{\sigma_{xz}}}{\partial{x}}+\frac{\partial{\sigma_{yz}}}{\partial{y}}+\frac{\partial{\sigma_{zz}}}{\partial{z}})
 \nonumber\\
-\frac{\partial{\sigma_{xx}}}{\partial{t}}=(\lambda+2\mu)\frac{\partial{v_x}}{\partial{x}}+\lambda\frac{\partial{v_y}}{\partial{y}}+\lambda\frac{\partial{v_z}}{\partial{z}}
+\frac{\partial{\sigma_{xx}}}{\partial{t}}&=(\lambda+2\mu)\frac{\partial{v_x}}{\partial{x}}+\lambda\frac{\partial{v_y}}{\partial{y}}+\lambda\frac{\partial{v_z}}{\partial{z}}
 \nonumber\\
-\frac{\partial{\sigma_{xy}}}{\partial{t}}=\mu(\frac{\partial{v_x}}{\partial{y}}+\frac{\partial{v_y}}{\partial{x}})
+\frac{\partial{\sigma_{xy}}}{\partial{t}}&=\mu(\frac{\partial{v_x}}{\partial{y}}+\frac{\partial{v_y}}{\partial{x}})
 \nonumber\\
-\frac{\partial{\sigma_{xz}}}{\partial{t}}=\mu(\frac{\partial{v_x}}{\partial{z}}+\frac{\partial{v_z}}{\partial{x}})
+\frac{\partial{\sigma_{xz}}}{\partial{t}}&=\mu(\frac{\partial{v_x}}{\partial{z}}+\frac{\partial{v_z}}{\partial{x}})
 \nonumber\\
-\frac{\partial{\sigma_{yy}}}{\partial{t}}=\lambda\frac{\partial{v_x}}{\partial{x}}+(\lambda+2\mu)\frac{\partial{v_y}}{\partial{y}}+\lambda\frac{\partial{v_z}}{\partial{z}}
+\frac{\partial{\sigma_{yy}}}{\partial{t}}&=\lambda\frac{\partial{v_x}}{\partial{x}}+(\lambda+2\mu)\frac{\partial{v_y}}{\partial{y}}+\lambda\frac{\partial{v_z}}{\partial{z}}
 \nonumber\\
-\frac{\partial{\sigma_{yz}}}{\partial{t}}=\mu(\frac{\partial{v_z}}{\partial{y}}+\frac{\partial{v_y}}{\partial{z}})
+\frac{\partial{\sigma_{yz}}}{\partial{t}}&=\mu(\frac{\partial{v_z}}{\partial{y}}+\frac{\partial{v_y}}{\partial{z}})
 \nonumber\\
-\frac{\partial{\sigma_{zz}}}{\partial{t}}=\lambda\frac{\partial{v_x}}{\partial{x}}+\lambda\frac{\partial{v_y}}{\partial{y}}+(\lambda+2\mu)\frac{\partial{v_z}}{\partial{z}}
-\end{eqnarray}
+\frac{\partial{\sigma_{zz}}}{\partial{t}}&=\lambda\frac{\partial{v_x}}{\partial{x}}+\lambda\frac{\partial{v_y}}{\partial{y}}+(\lambda+2\mu)\frac{\partial{v_z}}{\partial{z}}
+\end{align}
 
 Очевидно, что уравнения \ref{simple_equations} можно переписать в матричной форме:
 \begin{equation}
@@ -92,12 +92,12 @@ $\vec{u}=\{v_x,v_y,v_z,\sigma_{xx},\sigma_{yy},\sigma_{zz},\sigma_{xy},\sigma_{x
 \label{elastic_matrixes}
 
 Для линейно упругого тела тензор $q_{ijkl}$ и правая часть $F_{ij}$ в \ref{initial_equations} принимают следующий вид:
-\begin{eqnarray}
+\begin{align}
 \label{tensor_qijkl_elastic}
-q_{ijkl}=\lambda\delta_{ij}\delta_{kl}+\mu(\delta_{ik}\delta_{jl}+\delta_{il}
+q_{ijkl}&=\lambda\delta_{ij}\delta_{kl}+\mu(\delta_{ik}\delta_{jl}+\delta_{il}
 \delta_{jk}),\nonumber\\
-F_{ij}=0.
-\end{eqnarray}
+F_{ij}&=0.
+\end{align}
 В этом соотношении $\lambda$ и $\mu$ -- параметры Ламе, $\delta_{ij}$ -- символ Кронекера.
 
 Для линейно упругого тела матрицы $\mathbf{A}_x$, $\mathbf{A}_y$, $\mathbf{A}_z$ в \ref{matrix_equation} принимают следующий вид.
@@ -156,12 +156,12 @@ F_{ij}=0.
 \label{plastic_matrixes}
 
 Для упруго-пластического тела используется модель Прандтля-Рейсса с условием текучести Мизеса. Тогда тензор $q_{ijkl}$ и правая часть $F_{ij}$ в \ref{initial_equations} имеют более сложный вид:
-\begin{eqnarray}
+\begin{align}
 \label{tensor_qijkl_plastic}
-q_{ijkl}=\lambda\delta_{ij}\delta_{kl}+\mu(\delta_{ik}\delta_{jl}+\delta_{il}\delta_{jk})-\frac{I\mu\sigma_{ij}\sigma_{kl}}{K^2},
+q_{ijkl}&=\lambda\delta_{ij}\delta_{kl}+\mu(\delta_{ik}\delta_{jl}+\delta_{il}\delta_{jk})-\frac{I\mu\sigma_{ij}\sigma_{kl}}{K^2},
 \nonumber\\
-F_{ij}=0.
-\end{eqnarray}
+F_{ij}&=0.
+\end{align}
 В этом соотношении $\lambda$ и $\mu$ -- параметры Ламе, $K$ -- предел текучести на сдвиг, $\sigma_{ij}$ -- компоненты тензора напряжений, $\delta_{ij}$ -- символ Кронекера, $I$ -- параметр модели, который определяется следующим образом:
 
 \begin{equation}
@@ -228,12 +228,12 @@ I=\begin{cases}
 \label{viscosity_matrixes}
 
 Для вязко-упругого тела при использовании модели Максвелла тензор $q_{ijkl}$ и правая часть $F_{ij}$ в \ref{initial_equations} принимают следующий вид:
-\begin{eqnarray}
+\begin{align}
 \label{tensor_qijkl_viscosity}
-q_{ijkl}=\lambda\delta_{ij}\delta_{kl}+\mu(\delta_{ik}\delta_{jl}+\delta_{il}
+q_{ijkl}&=\lambda\delta_{ij}\delta_{kl}+\mu(\delta_{ik}\delta_{jl}+\delta_{il}
 \delta_{jk}),\nonumber\\
-F_{ij}=-\frac{\sigma_{ij}}{\tau_0}.
-\end{eqnarray}
+F_{ij}&=-\frac{\sigma_{ij}}{\tau_0}.
+\end{align}
 В этом соотношении $\lambda$ и $\mu$ -- параметры Ламе, $\delta_{ij}$ -- символ Кронекера, $\tau_0$ -- время релаксации.
 
 
@@ -244,20 +244,20 @@ F_{ij}=-\frac{\sigma_{ij}}{\tau_0}.
 \label{rabotnov_matrixes}
 
 При использовании модели Работнова наследственной вязко-упругой среды тензор $q_{ijkl}$ и правая часть $F_{ij}$ в \ref{initial_equations} принимают следующий вид:
-\begin{eqnarray}
+\begin{align}
 \label{tensor_qijkl_rabotnov}
-q_{ijkl}=\lambda\delta_{ij}\delta_{kl}+\mu(\delta_{ik}\delta_{jl}+\delta_{il}
+q_{ijkl}&=\lambda\delta_{ij}\delta_{kl}+\mu(\delta_{ik}\delta_{jl}+\delta_{il}
 \delta_{jk}),\nonumber\\
-F_{ij}=-(L^*+M^*)\sigma_{ij}.
-\end{eqnarray}
+F_{ij}&=-(L^*+M^*)\sigma_{ij}.
+\end{align}
 В этом соотношении $\lambda$ и $\mu$ -- параметры Ламе, $\delta_{ij}$ -- символ Кронекера. Правая часть имеет достаточно сложный вид и описывает поведение материала с учетом истории его нагружения. Оператор $L^*$ учитывает вязкие эффекты, оператор $M^*$ -- накопление повреждений. Вид операторов:
-\begin{eqnarray}
+\begin{align}
 \label{right_hand_rabotnov}
-L^*\sigma_{ij} = \int_0^T{K_L(1-\tau)\sigma_{ij}d\tau}, \nonumber\\
-M^*\sigma_{ij} = \int_0^T{K_M(1-\tau)\sigma_{ij}d\tau}, \nonumber\\
-K_L(1-\tau)=\rho(1-\tau)^{-\alpha}, \nonumber\\
-K_M(1-\tau)=m(1-\tau)^{-\alpha}.
-\end{eqnarray}
+L^*\sigma_{ij} &= \int_0^T{K_L(1-\tau)\sigma_{ij}d\tau}, \nonumber\\
+M^*\sigma_{ij} &= \int_0^T{K_M(1-\tau)\sigma_{ij}d\tau}, \nonumber\\
+K_L(1-\tau)&=\rho(1-\tau)^{-\alpha}, \nonumber\\
+K_M(1-\tau)&=m(1-\tau)^{-\alpha}.
+\end{align}
 Здесь $K_L(1-\tau)$ и $K_M(1-\tau)$ -- разностные ядра Абеля.
 
 При использовании модели Работнова уравнения перестают быть локальными, для поиска решения на временном слое $n+1$ требуется интегрирование, вообще говоря, за все время жизни среды.
@@ -273,13 +273,13 @@ K_M(1-\tau)=m(1-\tau)^{-\alpha}.
 \label{kukudzhanov_matrixes}
 
 Для вязко-упруго-пластического тела при использовании модели Кукуджанова тензор $q_{ijkl}$ и правая часть $F_{ij}$ в \ref{initial_equations} принимают следующий вид:
-\begin{eqnarray}
+\begin{align}
 \label{tensor_qijkl_kukudzhanov}
-q_{ijkl}=\lambda\delta_{ij}\delta_{kl}+\mu(\delta_{ik}\delta_{jl}+\delta_{il}
+q_{ijkl}&=\lambda\delta_{ij}\delta_{kl}+\mu(\delta_{ik}\delta_{jl}+\delta_{il}
 \delta_{jk}),\nonumber\\
-F_{ij}=-\frac{2\mu}{\tau_0\sigma_{kl}\sigma_{kl}} F(\sigma_{kl},\sigma_{kl},K)\sigma_{ij},\nonumber\\
-F(\sigma_{kl},\sigma_{kl},K) = \frac{(\sigma_{kl},\sigma_{kl})^{1/2}-(2K)^{1/2}}{\tau_0(\sigma_{kl},\sigma_{kl})^{1/2}}
-\end{eqnarray}
+F_{ij}&=-\frac{2\mu}{\tau_0\sigma_{kl}\sigma_{kl}} F(\sigma_{kl},\sigma_{kl},K)\sigma_{ij},\nonumber\\
+F(\sigma_{kl},\sigma_{kl},K) &= \frac{(\sigma_{kl},\sigma_{kl})^{1/2}-(2K)^{1/2}}{\tau_0(\sigma_{kl},\sigma_{kl})^{1/2}}
+\end{align}
 В этом соотношении $\lambda$ и $\mu$ -- параметры Ламе, $\delta_{ij}$ -- символ Кронекера, $\tau_0$ -- время релаксации, $K$ -- предел текучести на сдвиг.
 
 Для вязко-упруго-пластического тела матрицы $\mathbf{A}_x$, $\mathbf{A}_y$, $\mathbf{A}_z$ в \ref{matrix_equation} принимают вид, полностью совпадающий со случаем линейно упругого тела (см.раздел\ref{elastic_matrixes}). Отличия только в правой части уравнений.
@@ -295,68 +295,68 @@ F(\sigma_{kl},\sigma_{kl},K) = \frac{(\sigma_{kl},\sigma_{kl})^{1/2}-(2K)^{1/2}}
 Исследуем, как преобразуются уравнения при смене базиса. Для этого рассмотрим исходный базис $\vec x = (x, y, z)^T$ и новый базис $\vec \xi = (\xi, \eta, \zeta)^T$. Пусть $\mathbf G$ - матрица, столбцами которой являются координаты векторов нового базиса $\vec \xi$ в старом базисе $\vec x$.
 
 Тогда координаты точек, их скорости, а также компоненты тензора напряжений при переходе между базисами преобразуются следующим образом:
-\begin{eqnarray}
+\begin{align}
 \label{basis_change}
-\vec r_x = \mathbf G \vec r_{\xi},
+\vec r_x &= \mathbf G \vec r_{\xi},
 \nonumber\\
-\vec v_x = \mathbf G \vec v_{\xi},
+\vec v_x &= \mathbf G \vec v_{\xi},
 \nonumber\\
-\vec \sigma_x = \mathbf G \sigma_{\xi} \mathbf G,
+\vec \sigma_x &= \mathbf G \sigma_{\xi} \mathbf G,
 \nonumber\\
-\vec r_{\xi} = {\mathbf G}^{-1} \vec r_x,
+\vec r_{\xi} &= {\mathbf G}^{-1} \vec r_x,
 \nonumber\\
-\vec v_{\xi} = {\mathbf G}^{-1} \vec v_x,
+\vec v_{\xi} &= {\mathbf G}^{-1} \vec v_x,
 \nonumber\\
-\vec \sigma_{\xi} = {\mathbf G}^{-1} \sigma_x {\mathbf G}^{-1}.
-\end{eqnarray}
+\vec \sigma_{\xi} &= {\mathbf G}^{-1} \sigma_x {\mathbf G}^{-1}.
+\end{align}
 
 Здесь индекс $x$ относится к величинам, заданным в старом базисе, а индекс $\xi$ -- в новом.
 
 При программной реализации того или иного метода решения системы \ref{matrix_equation} удобно задавать входные параметры и получать результаты в некоторой фиксированной декартовой системе координат $\vec x$, так как такой формат является естественным для предметной области. Что принципиально с точки зрения реализации метода -- уравнения \ref{matrix_equation} записаны в форме, независимой от выбора той или иной системы координат. Поэтому можно хранить состояние среды (компоненты скорости и напряжения) в фиксированном базисе $\vec x$, а вычисления вести в некотором локальном базисе $\vec \xi$, удобном с точки зрения алгоритма численного метода и локальной конфигурации узлов расчётной сетки. В этом случае необходимо лишь специально указать, какие операторы подставлять вместо компонент градиента.
 
 Переход к производным по направлениям нового базиса в \ref{matrix_equation} приводит к следующим преобразованиям:
-\begin{eqnarray}
+\begin{align}
 \nonumber
-\vec{f} = \frac{\partial\vec{u}}{\partial{t}} + 
+\vec{f} &= \frac{\partial\vec{u}}{\partial{t}} + 
 \mathbf{A}_x\frac{\partial\vec{u}}{\partial{x}} + 
 \mathbf{A}_y\frac{\partial\vec{u}}{\partial{y}} + 
 \mathbf{A}_z\frac{\partial\vec{u}}{\partial{z}} =
-\nonumber\\
-= \frac{\partial\vec{u}}{\partial{t}} + 
+& \nonumber\\
+&= \frac{\partial\vec{u}}{\partial{t}} + 
 \mathbf{A}_x (\frac{\partial\vec{u}}{\partial{\xi}}\frac{\partial{\xi}}{\partial{x}} + 
 \frac{\partial\vec{u}}{\partial{\eta}}\frac{\partial{\eta}}{\partial{x}} + 
 \frac{\partial\vec{u}}{\partial{\zeta}}\frac{\partial{\zeta}}{\partial{x}} ) + 
-\nonumber\\
-+ \mathbf{A}_y (\frac{\partial\vec{u}}{\partial{\xi}}\frac{\partial{\xi}}{\partial{y}} + 
+& \nonumber\\
+& + \mathbf{A}_y (\frac{\partial\vec{u}}{\partial{\xi}}\frac{\partial{\xi}}{\partial{y}} + 
 \frac{\partial\vec{u}}{\partial{\eta}}\frac{\partial{\eta}}{\partial{y}} + 
 \frac{\partial\vec{u}}{\partial{\zeta}}\frac{\partial{\zeta}}{\partial{y}} ) + 
-\nonumber\\
-+ \mathbf{A}_z (\frac{\partial\vec{u}}{\partial{\xi}}\frac{\partial{\xi}}{\partial{z}} + 
+& \nonumber\\
+& + \mathbf{A}_z (\frac{\partial\vec{u}}{\partial{\xi}}\frac{\partial{\xi}}{\partial{z}} + 
 \frac{\partial\vec{u}}{\partial{\eta}}\frac{\partial{\eta}}{\partial{z}} + 
 \frac{\partial\vec{u}}{\partial{\zeta}}\frac{\partial{\zeta}}{\partial{z}} ) = 
-\nonumber\\
-= \frac{\partial\vec{u}}{\partial{t}} + 
+& \nonumber\\
+& = \frac{\partial\vec{u}}{\partial{t}} + 
 ( \frac{\partial{\xi}}{\partial{x}} \mathbf{A}_x  + 
 \frac{\partial{\xi}}{\partial{y}} \mathbf{A}_y + 
 \frac{\partial{\xi}}{\partial{z}} \mathbf{A}_z ) \frac{\partial\vec{u}}{\partial{\xi}} + 
-\nonumber\\
-+ ( \frac{\partial{\eta}}{\partial{x}} \mathbf{A}_x + 
+& \nonumber\\
+& + ( \frac{\partial{\eta}}{\partial{x}} \mathbf{A}_x + 
 \frac{\partial{\eta}}{\partial{y}} \mathbf{A}_y + 
 \frac{\partial{\eta}}{\partial{z}} \mathbf{A}_z ) \frac{\partial\vec{u}}{\partial{\eta}} + 
-\nonumber\\
-+ ( \frac{\partial{\zeta}}{\partial{x}} \mathbf{A}_x  + 
+& \nonumber\\
+& + ( \frac{\partial{\zeta}}{\partial{x}} \mathbf{A}_x  + 
 \frac{\partial{\zeta}}{\partial{y}} \mathbf{A}_y + 
 \frac{\partial{\zeta}}{\partial{z}} \mathbf{A}_z ) \frac{\partial\vec{u}}{\partial{\zeta}}.
-\end{eqnarray}
+\end{align}
 
 Таким образом, уравнение \ref{matrix_equation} после замены базиса имеет вид:
-\begin{eqnarray}
+\begin{align}
 \label{matrix_equation_generalized}
 \frac{\partial\vec{u}}{\partial{t}} + 
 ( \xi_x \mathbf{A}_x  + \xi_y \mathbf{A}_y + \xi_z \mathbf{A}_z ) \frac{\partial\vec{u}}{\partial{\xi}} + 
 ( \eta_x \mathbf{A}_x + \eta_y \mathbf{A}_y + \eta_z \mathbf{A}_z ) \frac{\partial\vec{u}}{\partial{\eta}} + \nonumber\\
 + ( \zeta_x \mathbf{A}_x  + \zeta_y \mathbf{A}_y + \zeta_z \mathbf{A}_z ) \frac{\partial\vec{u}}{\partial{\zeta}} = \vec f.
-\end{eqnarray}
+\end{align}
 
 Или, после замены обозначений:
 \begin{equation}
@@ -400,21 +400,21 @@ q_x^2 + q_y^2 + q_z^2 = 1.
 
 Полученная матрица имеет следующую структуру:
 
-\begin{eqnarray}
-- \mathbf{A}_q =
+\begin{align}
+- \mathbf{A}_q &=
 \left( \begin{array}{cccccccccccc}
 0 & \mathbf{B} \\
 \mathbf{C} & 0
 \end{array} \right),
 \nonumber\\
-\mathbf{B} = 
+\mathbf{B} &= 
 \left( \begin{array}{cccccccccccc}
 \frac 1 \rho q_x & \frac 1 \rho q_y & \frac 1 \rho q_z & 0 & 0 & 0 \\ 
 0 & \frac 1 \rho q_x & 0 & \frac 1 \rho q_y & \frac 1 \rho q_z & 0 \\ 
 0 & 0 & \frac 1 \rho q_x & 0 & \frac 1 \rho q_y & \frac 1 \rho q_z 
 \end{array} \right),
 \nonumber\\
-\mathbf{C} = 
+\mathbf{C} &= 
 \left( \begin{array}{cccccccccccc}
 (\lambda+2\mu) q_x & \lambda q_y & \lambda q_z \\ 
 \mu q_y & \mu q_x & 0 \\ 
@@ -423,21 +423,21 @@ q_x^2 + q_y^2 + q_z^2 = 1.
 0 & \mu q_z & \mu q_y \\ 
 \lambda q_x & \lambda q_y & (\lambda+2\mu) q_z  
 \end{array} \right)
-\end{eqnarray}
+\end{align}
 
 При нахождении собственных значений и векторов по методу Челнокова \cite{chelnokov} задача сводится к нахождению их для матрицы $\mathbf{C}^T \mathbf{B}^T$, которая имеет следующий вид:
 
-\begin{eqnarray}
+\begin{align}
 \frac 1 \rho 
 \left( \begin{array}{cccccccccccc}
 (\lambda+2\mu) q_x^2 + \mu q_y^2 + \mu q_z^2 & (\lambda+\mu) q_x q_y & (\lambda+\mu) q_x q_z \\
 (\lambda+\mu) q_x q_y & \mu q_x^2 + (\lambda+2\mu) q_y^2 + \mu q_z^2 & (\lambda+\mu) q_y q_z \\
 (\lambda+\mu) q_x q_z & (\lambda+\mu) q_y q_z & \mu q_x^2 + \mu q_y^2 + (\lambda+2\mu) q_z^2  
 \end{array} \right).
-\end{eqnarray} 
+\end{align} 
 
 Собственные числа имеют вид:
-\begin{eqnarray}
+\begin{align}
 \left( \begin{array}{cccccccccccc}
 \lambda_1 \\
 \lambda_2 \\
@@ -449,7 +449,7 @@ q_x^2 + q_y^2 + q_z^2 = 1.
 \mu \\
 \mu  
 \end{array} \right).
-\end{eqnarray} 
+\end{align} 
 
 Таким образом, при смене базиса собственные числа $\lambda_i$ меняются в $q_x^2 + q_y^2 + q_z^2$ раз. Если оба базиса ортонормированные, то соотношение \ref{good_basis_condition} выполняется и собственные числа не меняются при смене базиса. В случае же перехода в неортонормированный базис собственные числа могут меняться в широком диапазоне.
 
@@ -463,104 +463,103 @@ q_x^2 + q_y^2 + q_z^2 = 1.
 \subsubsection{Нормальные и касательные напряжения}
 
 Вектор напряжения $\mathbf{T}$, действующий на произвольную площадку, заданную нормалью $\mathbf n$, имеет вид
-\begin{eqnarray}
+\begin{align}
 \mathbf{T}^{(\mathbf n)}= \boldsymbol{\sigma}\cdot\mathbf n.
-\end{eqnarray}
+\end{align}
 
 Нормальная часть напряжения очевидно равняется скалярному произведению вектора напряжения и нормали к площадке. Выражая через компоненты тензора напряжений и компоненты вектора нормали получаем
-\begin{eqnarray}
+\begin{align}
 \sigma_\mathrm{n} = \mathbf{T}^{(\mathbf{n})}\cdot \mathbf{n} = T^{(\mathbf n)}_i n_i = \sigma_{ij}n_i n_j.
-\end{eqnarray}
+\end{align}
 
 Величина касательного напряжения к данной площадке выражается через полный вектор напряжения и нормальную составляющую напряжения
-\begin{eqnarray}
+\begin{align}
 \tau_\mathrm{n} = \sqrt{ \left( T^{(\mathbf n)} \right)^2-\sigma_\mathrm{n}^2} = \sqrt{T_i^{(\mathbf n)}T_i^{(\mathbf n)}-\sigma_\mathrm{n}^2},
-\end{eqnarray}
+\end{align}
 
 где
-\begin{eqnarray}
+\begin{align}
 \left( T^{(\mathbf n)} \right)^2 = T_i^{(\mathbf n)} T_i^{(\mathbf n)} = \left( \sigma_{ij} n_j \right) \left(\sigma_{ik} n_k \right) = \sigma_{ij} \sigma_{ik} n_j n_k.
-\end{eqnarray}
+\end{align}
 
 
 \subsubsection{Главные напряжения и инварианты тензора напряжений}
 
 В любой точке напряженно-деформированного тела есть три направления, называемые главными. Если воспринимать вектор главного направления $\mathbf{n}$ как вектор нормали к некоторой площадке, то действующий на данную площадку вектор напряжения оказывается перпендикулярен к ней. Таким образом, вектор напряжения оказывается параллельным вектору главного направления, а касательные напряжения к данной площадке отсутствуют. Таким образом, три главных направления и соответствующие им три главных напряжения составляют базис, в котором тензор напряжений имеет диагональный вид.
 
-\begin{eqnarray}
+\begin{align}
 \sigma_{ij} = \begin{bmatrix} \sigma_1 & 0 & 0\\ 
 0 & \sigma_2 & 0\\ 
 0 & 0 & \sigma_3 \end{bmatrix}.
-\end{eqnarray}
+\end{align}
 
 Здесь $\sigma_1, \sigma_2, \sigma_3$ - соответственно три главных напряжения.
 
 Если вектор напряжения параллелен нормали, то получаем:
-\begin{eqnarray}
-\mathbf{T}^{(\mathbf{n})} = \lambda \mathbf{n}= \mathbf{\sigma}_\mathrm n \mathbf{n} \nonumber\\
-T_i^{(n)} = \sigma_{ij}n_j\,\! and n_i=\delta_{ij}n_j \nonumber\\
-\sigma_{ij}n_j = \lambda n_i \nonumber\\ 
-\sigma_{ij}n_j - \lambda n_i = 0 \nonumber\\ 
-(\sigma_{ij} - \lambda\delta_{ij}) n_j = 0.
-\end{eqnarray}
+\begin{align}
+\mathbf{T}^{(\mathbf{n})} &= \lambda \mathbf{n}= \mathbf{\sigma}_\mathrm n \mathbf{n} \nonumber\\
+\sigma_{ij}n_j &= \lambda n_i \nonumber\\ 
+\sigma_{ij}n_j - \lambda n_i &= 0 \nonumber\\ 
+(\sigma_{ij} - \lambda\delta_{ij}) n_j &= 0.
+\end{align}
 
 Решение полученной системы
-\begin{eqnarray}
+\begin{align}
 det|\sigma_{ij}- \lambda\delta_{ij}|=det \begin{vmatrix} \sigma_{11} - \lambda & \sigma_{12} & \sigma_{13} \\ \sigma_{21} & \sigma_{22} - \lambda & \sigma_{23} \\ \sigma_{31}& \sigma_{32} & \sigma_{33} - \lambda \\ \end{vmatrix}=0
-\end{eqnarray}
+\end{align}
 
 дает характеристическое уравнение
-\begin{eqnarray}
+\begin{align}
 det|\sigma_{ij}- \lambda\delta_{ij}| = -\lambda^3 + I_1\lambda^2 - I_2\lambda + I_3=0,
-\end{eqnarray}
+\end{align}
 
 где
-\begin{eqnarray}
-I_1 = \sigma_{11}+\sigma_{22}+\sigma_{33} = \sigma_{kk}, \nonumber\\ 
-I_2 = det\begin{vmatrix} \sigma_{22} & \sigma_{23} \\ \sigma_{32} & \sigma_{33} \\ \end{vmatrix} + det\begin{vmatrix} \sigma_{11} & \sigma_{13} \\ \sigma_{31} & \sigma_{33} \\ \end{vmatrix} + det\begin{vmatrix} \sigma_{11} & \sigma_{12} \\ \sigma_{21} & \sigma_{22} \\ \end{vmatrix} = \nonumber\\ 
-= \sigma_{11}\sigma_{22}+\sigma_{22}\sigma_{33}+\sigma_{11}\sigma_{33}-\sigma_{12}^2-\sigma_{23}^2-\sigma_{31}^2 = \nonumber\\ 
-= \frac{1}{2}\left(\sigma_{ii}\sigma_{jj}-\sigma_{ij}\sigma_{ji}\right), \nonumber\\ 
-I_3 = \det(\sigma_{ij}) = \nonumber\\ 
-= \sigma_{11}\sigma_{22}\sigma_{33}+2\sigma_{12}\sigma_{23}\sigma_{31}-\sigma_{12}^2\sigma_{33}-\sigma_{23}^2\sigma_{11}-\sigma_{31}^2\sigma_{22}
-\end{eqnarray}
+\begin{align}
+I_1 &= \sigma_{11}+\sigma_{22}+\sigma_{33} = \sigma_{kk}, \nonumber\\ 
+I_2 &= det\begin{vmatrix} \sigma_{22} & \sigma_{23} \\ \sigma_{32} & \sigma_{33} \\ \end{vmatrix} + det\begin{vmatrix} \sigma_{11} & \sigma_{13} \\ \sigma_{31} & \sigma_{33} \\ \end{vmatrix} + det\begin{vmatrix} \sigma_{11} & \sigma_{12} \\ \sigma_{21} & \sigma_{22} \\ \end{vmatrix} = \nonumber\\ 
+&= \sigma_{11}\sigma_{22}+\sigma_{22}\sigma_{33}+\sigma_{11}\sigma_{33}-\sigma_{12}^2-\sigma_{23}^2-\sigma_{31}^2 = \nonumber\\ 
+&= \frac{1}{2}\left(\sigma_{ii}\sigma_{jj}-\sigma_{ij}\sigma_{ji}\right), \nonumber\\ 
+I_3 &= \det(\sigma_{ij}) = \nonumber\\ 
+&= \sigma_{11}\sigma_{22}\sigma_{33}+2\sigma_{12}\sigma_{23}\sigma_{31}-\sigma_{12}^2\sigma_{33}-\sigma_{23}^2\sigma_{11}-\sigma_{31}^2\sigma_{22}
+\end{align}
 
 В силу симметрии тензора напряжений уравнение имеет три действительных корня $\lambda_i$. Полученные корни являются главными напряжениями:
-\begin{eqnarray}
-\sigma_1 = max \left( \lambda_1,\lambda_2,\lambda_3 \right), \nonumber\\
-\sigma_3 = min \left( \lambda_1,\lambda_2,\lambda_3 \right), \nonumber\\
-\sigma_2=I_1-\sigma_1-\sigma_3.
-\end{eqnarray}
+\begin{align}
+\sigma_1 &= max \left( \lambda_1,\lambda_2,\lambda_3 \right), \nonumber\\
+\sigma_3 &= min \left( \lambda_1,\lambda_2,\lambda_3 \right), \nonumber\\
+\sigma_2 &= I_1-\sigma_1-\sigma_3.
+\end{align}
 
 Из вида характеристического уравнения следует, что величины $I_1, I_2, I_3$ не зависят от того, в какой системе координат записан тензор напряжений $\sigma_{ij}$. Поэтому они называются инвариантами тензора напряжения. Через главные напряжения инварианты записываются в более простом виде:
-\begin{eqnarray}
-I_1 = \sigma_{1}+\sigma_{2}+\sigma_{3}, \nonumber\\ 
-I_2 = \sigma_{1}\sigma_{2}+\sigma_{2}\sigma_{3}+\sigma_{3}\sigma_{1}, \nonumber\\ 
-I_3 = \sigma_{1}\sigma_{2}\sigma_{3}.
-\end{eqnarray}
+\begin{align}
+I_1 &= \sigma_{1}+\sigma_{2}+\sigma_{3}, \nonumber\\ 
+I_2 &= \sigma_{1}\sigma_{2}+\sigma_{2}\sigma_{3}+\sigma_{3}\sigma_{1}, \nonumber\\ 
+I_3 &= \sigma_{1}\sigma_{2}\sigma_{3}.
+\end{align}
 
 \subsubsection{Гидростатическая и девиаторная часть тензора}
 
 Тензор напряжений удобно представить в виде суммы двух тензоров
-\begin{eqnarray}
+\begin{align}
 \sigma_{ij}= p\delta_{ij} + s_{ij}
-\end{eqnarray}
+\end{align}
 
 Здесь первый компонент представляет собой гидростатическую часть напряжения
-\begin{eqnarray}
+\begin{align}
 p=\frac{\sigma_{kk}}{3}=\frac{\sigma_{11}+\sigma_{22}+\sigma_{33}}{3}=\tfrac{1}{3}I_1
-\end{eqnarray}
+\end{align}
 
 Этот компонент напряжения отвечает за сжатие тела и изменение его объема.
 
 Второй компонент - девиатор тензора напряжений - имеет вид
-\begin{eqnarray}
+\begin{align}
 s_{ij} &= \sigma_{ij} - \frac{\sigma_{kk}}{3}\delta_{ij}.
-\end{eqnarray}
+\end{align}
 
 Девиатор отвечает за изменение формы тела без изменения объема.
 
 В матричной форме записи девиатор имеет вид
-\begin{eqnarray}
+\begin{align}
 \left[{\begin{matrix}
 s_{11} & s_{12} & s_{13} \\
 s_{21} & s_{22} & s_{23} \\
@@ -580,23 +579,23 @@ p & 0 & 0 \\
 \sigma_{21} & \sigma_{22}-p & \sigma_{23} \\
 \sigma_{31} & \sigma_{32} & \sigma_{33}-p \\
 \end{matrix}}\right].
-\end{eqnarray}
+\end{align}
 
 
 \subsubsection{Инварианты девиатора}
 
 Девиатор тензора напряжений имеет главные напряжения, главные направления и инварианты точно так же, как сам тензор напряжения. Процедура их поиска полностью аналогична. Характеристическое уравнение имеет вид
-\begin{eqnarray}
+\begin{align}
 det|s_{ij}- \lambda\delta_{ij}| = \lambda^3-J_1\lambda^2-J_2\lambda-J_3=0,
-\end{eqnarray}
+\end{align}
 где $J_1, J_2, J_3$ - инварианты девиатора, которые могут быть записаны через компоненты и собственные значения исходного тензора напряжений $\sigma_{ij}$ и $\sigma_1, \sigma_2, \sigma_3$, или через компоненты и собственные значения девиатора $s_{ij}$ и $s_1, s_2, s_3$:
-\begin{eqnarray}
-J_1 = s_{kk}=0, \nonumber\\ 
-J_2 = \frac{1}{2}s_{ij}s_{ji} = -s_1s_2 - s_2s_3 - s_3s_1 = \nonumber\\ 
-= \tfrac{1}{6}\left[(\sigma_{11} - \sigma_{22})^2 + (\sigma_{22} - \sigma_{33})^2 + (\sigma_{33} - \sigma_{11})^2 \right ] + \sigma_{12}^2 + \sigma_{23}^2 + \sigma_{31}^2 = \nonumber\\ 
-= \tfrac{1}{6}\left[(\sigma_1 - \sigma_2)^2 + (\sigma_2 - \sigma_3)^2 + (\sigma_3 - \sigma_1)^2 \right ] = \tfrac{1}{3}I_1^2-I_2, \nonumber\\ 
-J_3 = \det(s_{ij}) = \tfrac{1}{3}s_{ij}s_{jk}s_{ki} = s_1s_2s_3 = \tfrac{2}{27}I_1^3 - \tfrac{1}{3}I_1 I_2 + I_3.
-\end{eqnarray}
+\begin{align}
+J_1 &= s_{kk}=0, \nonumber\\ 
+J_2 &= \frac{1}{2}s_{ij}s_{ji} = -s_1s_2 - s_2s_3 - s_3s_1 = \nonumber\\ 
+ &= \tfrac{1}{6}\left[(\sigma_{11} - \sigma_{22})^2 + (\sigma_{22} - \sigma_{33})^2 + (\sigma_{33} - \sigma_{11})^2 \right ] + \sigma_{12}^2 + \sigma_{23}^2 + \sigma_{31}^2 = \nonumber\\ 
+ &= \tfrac{1}{6}\left[(\sigma_1 - \sigma_2)^2 + (\sigma_2 - \sigma_3)^2 + (\sigma_3 - \sigma_1)^2 \right ] = \tfrac{1}{3}I_1^2-I_2, \nonumber\\ 
+J_3 &= \det(s_{ij}) = \tfrac{1}{3}s_{ij}s_{jk}s_{ki} = s_1s_2s_3 = \tfrac{2}{27}I_1^3 - \tfrac{1}{3}I_1 I_2 + I_3.
+\end{align}
 
 \clearpage
 \newpage
@@ -652,11 +651,11 @@ J_3 = \det(s_{ij}) = \tfrac{1}{3}s_{ij}s_{jk}s_{ki} = s_1s_2s_3 = \tfrac{2}{27}I
 J_2 \ge k^2,
 \end{equation}
 где $J_2$ - второй инвариант девиатора, а $k$ - предел текучести на сдвиг. Отсюда следует простая запись критерия Мизеса через компоненты тензора напряжений:
-\begin{eqnarray}
+\begin{align}
 \label{von_mises_criteria_components}
-k^2 \le J_2 = \frac{1}{2}s_{ij}s_{ji} = -s_1s_2 - s_2s_3 - s_3s_1 = \nonumber\\
-= \frac{1}{6}[(\sigma_{xx} - \sigma_{yy})^2 + (\sigma_{yy} - \sigma_{zz})^2 + (\sigma_{xx} - \sigma_{zz})^2 ] + \sigma_{xy}^2 + \sigma_{yz}^2 + \sigma_{xz}^2.
-\end{eqnarray}
+k^2 \le J_2 &= \frac{1}{2}s_{ij}s_{ji} = -s_1s_2 - s_2s_3 - s_3s_1 = \nonumber\\
+ &= \frac{1}{6}[(\sigma_{xx} - \sigma_{yy})^2 + (\sigma_{yy} - \sigma_{zz})^2 + (\sigma_{xx} - \sigma_{zz})^2 ] + \sigma_{xy}^2 + \sigma_{yz}^2 + \sigma_{xz}^2.
+\end{align}
 
 Или через главные напряжения:
 \begin{equation}
@@ -693,16 +692,16 @@ k^2 \le \frac{1}{6}[(\sigma_1 - \sigma_2)^2 + (\sigma_2 - \sigma_3)^2 + (\sigma_
 где $\sigma_n$ - нормальное напряжение, $\tau_n$ - касательное напряжение, $\phi$ - угол внутреннего трения, $c$ - коэффициент когезии. Нетрудно заметить, что при $\phi = 0$ критерий Мора переходит в критерий Треска.
 
 При этом
-\begin{eqnarray}
-\sigma = \sigma_m - \tau_m \sin\phi, \nonumber\\
-\tau = \tau_m \cos\phi,
-\end{eqnarray}
+\begin{align}
+\sigma &= \sigma_m - \tau_m \sin\phi, \nonumber\\
+\tau &= \tau_m \cos\phi,
+\end{align}
 
 где
-\begin{eqnarray}
-\tau_m = \frac{\sigma_1-\sigma_3}{2} \nonumber\\
-\sigma_m = \frac{\sigma_1+\sigma_3}{2} 
-\end{eqnarray}.
+\begin{align}
+\tau_m &= \frac{\sigma_1-\sigma_3}{2} \nonumber\\
+\sigma_m &= \frac{\sigma_1+\sigma_3}{2} 
+\end{align}.
 
 Таким образом, критерий может быть альтернативно записан в форме:
 \begin{equation}
@@ -710,11 +709,11 @@ k^2 \le \frac{1}{6}[(\sigma_1 - \sigma_2)^2 + (\sigma_2 - \sigma_3)^2 + (\sigma_
 \end{equation}
 
 В трехмерном случае критерий имеет более сложный вид:
-\begin{eqnarray}
+\begin{align}
   \pm\cfrac{\sigma_1 - \sigma_2}{2} & = \left[\cfrac{\sigma_1 + \sigma_2}{2}\right]\sin(\phi) + c\cos(\phi) \nonumber\\
   \pm\cfrac{\sigma_2 - \sigma_3}{2} & = \left[\cfrac{\sigma_2 + \sigma_3}{2}\right]\sin(\phi) + c\cos(\phi) \nonumber\\
   \pm\cfrac{\sigma_3 - \sigma_1}{2} & = \left[\cfrac{\sigma_3 + \sigma_1}{2}\right]\sin(\phi) + c\cos(\phi)
-\end{eqnarray}.
+\end{align}.
 
 Предельная поверхность в этом случае в пространстве главных напряжений имеет вид конуса, сечение которого девиаторными плоскостями представляют собой шестиугольники.
 
@@ -750,21 +749,21 @@ k^2 \le \frac{1}{6}[(\sigma_1 - \sigma_2)^2 + (\sigma_2 - \sigma_3)^2 + (\sigma_
 \end{equation}
 
 В покомпонентной записи получаем:
-\begin{eqnarray}
-\sigma = n_1^2 \sigma_{11} + n_2^2 \sigma_{22} + n_3^2 \sigma_{33} + 
+\begin{align}
+\sigma &= n_1^2 \sigma_{11} + n_2^2 \sigma_{22} + n_3^2 \sigma_{33} + 
 	2(n_1 n_2 \sigma_{12} + n_2 n_3 \sigma_{23} + n_3 n_1 \sigma_{31}), \nonumber\\
-\tau  = ((n_1\sigma_{11} + n_2\sigma_{12} + n_3\sigma_{31})^2 +
+\tau &= ((n_1\sigma_{11} + n_2\sigma_{12} + n_3\sigma_{31})^2 +
 	(n_1\sigma_{12} + n_2\sigma_{22} + n_3\sigma_{23})^2 + \nonumber\\
-	+ (n_1\sigma_{31} + n_2\sigma_{23} + n_3\sigma_{33})^2 - \sigma^2)^{1/2}
-\end{eqnarray}
+ &	+ (n_1\sigma_{31} + n_2\sigma_{23} + n_3\sigma_{33})^2 - \sigma^2)^{1/2}
+\end{align}
 
 Если базисные векторы $\mathbf{e}_i,~~ i=1,2,3$ сонаправлены с главными напряжениями $\sigma_1, \sigma_2, \sigma_3$, то получаем окончательное выражение в виде
-\begin{eqnarray}
-    \sigma = n_1^2 \sigma_{1} + n_2^2 \sigma_{2} + n_3^2 \sigma_{3}, \nonumber\\
-    \tau = \sqrt{(n_1\sigma_{1})^2 + (n_2\sigma_{2})^2 + (n_3\sigma_{3})^2 - \sigma^2} = \nonumber\\
-         = \sqrt{n_1^2 n_2^2 (\sigma_1-\sigma_2)^2 + n_2^2 n_3^2 (\sigma_2-\sigma_3)^2 + 
+\begin{align}
+    \sigma &= n_1^2 \sigma_{1} + n_2^2 \sigma_{2} + n_3^2 \sigma_{3}, \nonumber\\
+    \tau &= \sqrt{(n_1\sigma_{1})^2 + (n_2\sigma_{2})^2 + (n_3\sigma_{3})^2 - \sigma^2} = \nonumber\\
+         &= \sqrt{n_1^2 n_2^2 (\sigma_1-\sigma_2)^2 + n_2^2 n_3^2 (\sigma_2-\sigma_3)^2 + 
                  n_3^2 n_1^2 (\sigma_3 - \sigma_1)^2}
-\end{eqnarray}.
+\end{align}.
 
 
 \subsubsection{Критерий Друкера-Прагера}
@@ -796,10 +795,10 @@ k^2 \le \frac{1}{6}[(\sigma_1 - \sigma_2)^2 + (\sigma_2 - \sigma_3)^2 + (\sigma_
 \end{equation}
 
 Из этих уравнений следует связь параметров $A, B$ с пределами прочности при одноосном сжатии и одноосном растяжении:
-\begin{eqnarray}
+\begin{align}
 A = \cfrac{2}{\sqrt{3}}~\left(\cfrac{\sigma_c~\sigma_t}{\sigma_c+\sigma_t}\right), \nonumber\\
 B = \cfrac{1}{\sqrt{3}}~\left(\cfrac{\sigma_t-\sigma_c}{\sigma_c+\sigma_t}\right).
-\end{eqnarray}
+\end{align}
 
 Предельная поверхность Друкера-Прагера представляет собой сглаженный вариант предельной поверхности Мора.
 
@@ -809,16 +808,16 @@ B = \cfrac{1}{\sqrt{3}}~\left(\cfrac{\sigma_t-\sigma_c}{\sigma_c+\sigma_t}\right
 \end{figure}
 
 Если поверхность Друкера-Прагера описывает поверхность Мора, то связь коэффициентов $A, B$ с коэффициентом когезии и углом внутреннего трения имеет вид
-\begin{eqnarray}
+\begin{align}
 A = \cfrac{6~c~\cos\phi}{\sqrt{3}(3+\sin\phi)}, \nonumber\\
 B = \cfrac{2~\sin\phi}{\sqrt{3}(3+\sin\phi)}.
-\end{eqnarray}
+\end{align}
 
 Если поверхность Друкера-Прагера вписана в поверхность Мора, то уравнения принимают вид
-\begin{eqnarray}
+\begin{align}
 A = \cfrac{6~c~\cos\phi}{\sqrt{3}(3-\sin\phi)}, \nonumber\\
 B = \cfrac{2~\sin\phi}{\sqrt{3}(3-\sin\phi)}.
-\end{eqnarray}
+\end{align}
 
 В более сложных случаях критерий может иметь второй порядок относительно инварианта $I_1$ и, соответственно, гидростатической части тензора:
 \begin{equation}
