@@ -52,20 +52,20 @@
 Для изотропного однородного упругого тела уравнения движения можно представить как дифференциальное уравнение в векторной форме:
 
 \begin{equation}
-(\lambda+\mu)\nabla{div\vec{u}} + \mu\Delta\vec{u} + \rho(\vec{F}-\frac{\partial^2 u}{\partial t^2}) = 0,
+(\lambda+\mu)\nabla{div\vec{u}} + \mu\Delta\vec{u} + \rho(\vec{F}-\frac{\partial^2 \vec{u}}{\partial t^2}) = 0,
 \end{equation}
 
 где $\lambda, \mu$ -- параметры Ламе, $\rho$ -- плотность, $\vec{u}$ -- вектор перемещений, $\vec{F}$ -- объёмная сила.
 
 Рассмотрим безграничную среду и представим массовые силы и поле перемещений в виде:
 \begin{align}
-\vec{F} &= \nabla\Phi + rot\Psi, \nonumber\\
-\vec{u} &= \nabla\phi + rot\psi.
+\vec{F} &= \nabla\Phi + rot\vec{\Psi}, \nonumber\\
+\vec{u} &= \nabla\phi + rot\vec{\psi}.
 \end{align}
 
 После подстановки и изменения порядка дифференциальных операторов получаем
 \begin{equation}
-\nabla[c_1^2\Delta\phi - \frac{\partial^2 \phi}{\partial t^2} + \Phi] + rot[c_2^2\Delta\psi - \frac{\partial^2 \psi}{\partial t^2} + \Psi],
+\nabla[c_1^2\Delta\phi - \frac{\partial^2 \phi}{\partial t^2} + \Phi] + rot[c_2^2\Delta\vec{\psi} - \frac{\partial^2 \vec{\psi}}{\partial t^2} + \vec{\Psi}],
 \end{equation}
 
 где 
@@ -77,10 +77,10 @@ c_2^2 &= \frac{\mu}{\rho}.
 Таким образом, векторное поле $\vec{u}$ является решением уравнения, если функции $\phi$ и $\psi$ удовлетворяют соотношениям
 \begin{align}
 c_1^2\Delta\phi - \frac{\partial^2 \phi}{\partial t^2} &= -\Phi, \\
-c_2^2\Delta\psi - \frac{\partial^2 \psi}{\partial t^2} &= =\Psi.
+c_2^2\Delta\vec{\psi} - \frac{\partial^2 \vec{\psi}}{\partial t^2} &= =\vec{\Psi}.
 \end{align}
 
-Рассмотрим ситуацию, когда $\Psi \equiv 0$, а начальное условия $t = t_0, \phi = 0$. Тогда для определения $\phi$ получается однородное уравнение с нулевыми начальными условиями. Это означает, что $\phi \equiv 0$. Следовательно, в волне, описываемой такими условиями, не происходит вращения частиц среды, т.е. каждая из них движется поступательно. Такие волны называются продольными.
+Рассмотрим ситуацию, когда $\vec{\Psi} \equiv 0$, а начальное условия $t = t_0, \phi = 0$. Тогда для определения $\phi$ получается однородное уравнение с нулевыми начальными условиями. Это означает, что $\phi \equiv 0$. Следовательно, в волне, описываемой такими условиями, не происходит вращения частиц среды, т.е. каждая из них движется поступательно. Такие волны называются продольными.
 
 Аналогично, для $\Phi \equiv 0$ мы получим волны, для которых объемное расширение равно нулю. Такие волны называются поперечными или волнами сдвига. Заметим, что при распространении продольные волны не генерируют поперечных, и наоборот. Скорости распространения их фронтов -- $c_1$ и $c_2$ соответственно.
 
@@ -248,11 +248,11 @@ v_z=C_s=100.
 Для указанных волн получаются следующие амплитудные соотношения для потенциалов:
 \begin{align}
 \acute{P}\grave{P} &= \frac{ -(\frac{1}{\beta^2} - 2p^2)^2 + 4p^2\frac{\cos{i}}{\alpha}\frac{\cos{j}}{\beta} }{ (\frac{1}{\beta^2} - 2p^2)^2 + 4p^2\frac{\cos{i}}{\alpha}\frac{\cos{j}}{\beta} }, \nonumber\\
-\acute{P}\grave{S} &= \frac{ 4\frac{\alpha}{\beta}p\frac{\cos{i}}{\alpha}(\frac{1}{\beta^2} - 2p^2)^2 }{ (\frac{1}{\beta^2} - 2p^2)^2 + 4p^2\frac{\cos{i}}{\alpha}\frac{\cos{j}}{\beta} }.
+\acute{P}\grave{S} &= \frac{ 4\frac{\alpha}{\beta}p\frac{\cos{i}}{\alpha}(\frac{1}{\beta^2} - 2p^2) }{ (\frac{1}{\beta^2} - 2p^2)^2 + 4p^2\frac{\cos{i}}{\alpha}\frac{\cos{j}}{\beta} }.
 \end{align}
 
 \begin{align}
-\acute{S}\grave{P} &= \frac{ 4\frac{\beta}{\alpha}p\frac{\cos{j}}{\beta}(\frac{1}{\beta^2} - 2p^2)^2 }{ (\frac{1}{\beta^2} - 2p^2)^2 + 4p^2\frac{\cos{i}}{\alpha}\frac{\cos{j}}{\beta} }, \nonumber\\
+\acute{S}\grave{P} &= \frac{ 4\frac{\beta}{\alpha}p\frac{\cos{j}}{\beta}(\frac{1}{\beta^2} - 2p^2) }{ (\frac{1}{\beta^2} - 2p^2)^2 + 4p^2\frac{\cos{i}}{\alpha}\frac{\cos{j}}{\beta} }, \nonumber\\
 \acute{S}\grave{S} &= \frac{ (\frac{1}{\beta^2} - 2p^2)^2 - 4p^2\frac{\cos{i}}{\alpha}\frac{\cos{j}}{\beta} }{ (\frac{1}{\beta^2} - 2p^2)^2 + 4p^2\frac{\cos{i}}{\alpha}\frac{\cos{j}}{\beta} }.
 \end{align}
 
@@ -339,7 +339,7 @@ s &= \sqrt{k^2 - k_t^2}.
 Следовательно, для искомых потенциалов:
 \begin{align}
 \phi &= A_s\ch{q_{s}ze^{ik_{s}x}} + B_a\sh{q_{a}ze^{ik_{a}x}}, \nonumber\\
-\psi &= \frac{ 2ik_{s}q_{s}\sh{q_{s}d} }{ (k_s^2+s_s^2)\sh{s_{s}d} } A_s\sh{s_{s}ze^{ik_{s}x}} + \frac{ 2ik_{a}q_{a}\sh{q_{a}d} }{ (k_a^2+s_a^2)\sh{s_{a}d} } B_a\ch{s_{a}ze^{ik_{a}x}}.
+\psi &= \frac{ 2ik_{s}q_{s}\sh{q_{s}d} }{ (k_s^2+s_s^2)\sh{s_{s}d} } A_s\sh{s_{s}ze^{ik_{s}x}} + \frac{ 2ik_{a}q_{a}\ch{q_{a}d} }{ (k_a^2+s_a^2)\ch{s_{a}d} } B_a\ch{s_{a}ze^{ik_{a}x}}.
 \end{align}
 
 В результате получаем
@@ -391,12 +391,12 @@ L = (\frac{1}{4} + \frac{1}{8(1- \eta_{R}^{2})} + \frac{1}{8(1- \eta_{R}^{2} \xi
 
 где $\Phi$ и $\Psi$ -- потенциалы объёмной силы:
 \begin{equation}
-\vec{f} = \rho \frac{\partial^2 \vec{u}}{\partial t^2} - (\lambda + 2\mu)\nabla(\nabla\vec{u}) + \mu \nabla \times (\nabla \times \vec{u} ) = \nabla \Phi + \nabla \times \nabla \times (0, 0, \psi)^T.
+\vec{f} = \rho \frac{\partial^2 \vec{u}}{\partial t^2} - (\lambda + 2\mu)\nabla(\nabla\vec{u}) + \mu \nabla \times (\nabla \times \vec{u} ) = \nabla \Phi + \nabla \times \nabla \times (0, 0, \Psi)^T.
 \end{equation}
 
 Источник генерирует только P-волну:
 \begin{align}
-\Phi = A 4\pi \rho \alpha^2 \delta(x)\delta(y)\delta(z-h)e^(-i \omega t),
+\Phi = A 4\pi \rho \alpha^2 \delta(x)\delta(y)\delta(z-h)e^{-i \omega t},
 \Psi = 0,
 \end{align}
 
@@ -410,12 +410,12 @@ L = (\frac{1}{4} + \frac{1}{8(1- \eta_{R}^{2})} + \frac{1}{8(1- \eta_{R}^{2} \xi
 Сумма падающей и отражённой P-волны:
 \begin{align}
 \phi &= A i \omega exp(-i \omega t) \int_0^\infty { \frac{p}{\xi}J_0(\omega pr)exp(i \omega \xi |z - h|) \mathrm{d}p} + \nonumber\\
- & + A i \omega exp(-i \omega t) \int_0^\infty { PP \frac{p}{\xi}J_0(\omega pr)exp(i \omega \xi (z + h)) \mathrm{d}p}.
+ & + A i \omega exp(-i \omega t) \int_0^\infty { \acute{P}\grave{P} \frac{p}{\xi}J_0(\omega pr)exp(i \omega \xi (z + h)) \mathrm{d}p}.
 \end{align}
 
 Отраженная SV-волна:
 \begin{equation}
-\phi = A i \omega exp(-i \omega t) \int_0^\infty { (\frac{1}{i \omega p} \frac{\beta}{\alpha} PS) \frac{p}{\xi}J_0(\omega pr)exp(i \omega \xi |\xi h + \eta z|) \mathrm{d}p}.
+\phi = A i \omega exp(-i \omega t) \int_0^\infty { (\frac{1}{i \omega p} \frac{\beta}{\alpha} \acute{P}\grave{S}) \frac{p}{\xi}J_0(\omega pr)exp(i \omega \xi (\xi h + \eta z) ) \mathrm{d}p}.
 \end{equation}
 
 Обобщенное отражение P-волны распадается, с увеличением расстояния, на три различных типа P-волн: отраженная P-волна, поверхностная S-волна и P-компонента рэлеевской волны. Из тех же уравнений мы можем получить оценку расстояния формирования волны Рэлея:
@@ -547,7 +547,7 @@ P &= \sigma_n = -10000,
 \grave{P}\acute{S} &= -2 \frac{\cos{i_1}}{\alpha_1} (ab + cd \frac{\cos{i_2}}{\alpha_2} \frac{\cos{j_2}}{\beta_2} ) p \alpha_1 / (\beta_1 D), \nonumber\\
 \grave{P}\grave{P} &= 2 \rho_1 \frac{\cos{i_1}}{\alpha_1} F \alpha_1 / (\alpha_2 D), \nonumber\\
 \grave{P}\grave{S} &= 2 \rho_1 \frac{\cos{i_1}}{\alpha_1} H p \alpha_1 / (\beta_2 D), \nonumber\\
-\grave{S}\acute{P} &= -2 \frac{\cos{i_1}}{\beta_1} (ab + cd \frac{\cos{i_2}}{\alpha_2} \frac{\cos{j_2}}{\beta_2} ) p \beta_1 / (\alpha_1 D), \nonumber\\
+\grave{S}\acute{P} &= -2 \frac{\cos{j_1}}{\beta_1} (ab + cd \frac{\cos{i_2}}{\alpha_2} \frac{\cos{j_2}}{\beta_2} ) p \beta_1 / (\alpha_1 D), \nonumber\\
 \grave{S}\acute{S} &= - [ ( b\frac{\cos{j_1}}{\beta_1} - c\frac{\cos{j_2}}{\beta_2} )E - ( a + d\frac{\cos{i_2}}{\alpha_2}\frac{\cos{j_1}}{\beta_1} )Gp^2 ] / D, \nonumber\\
 \grave{S}\grave{P} &= - 2 \rho_1 \frac{\cos{j_1}}{\beta_1} Gp \beta_1 / (\alpha_2 D), \nonumber\\
 \grave{S}\grave{S} &= 2 \rho_1 \frac{\cos{j_1}}{\beta_1} E \beta_1 / (\beta_2 D), \nonumber\\
@@ -603,7 +603,7 @@ u_1 = u_1^*, u_2 = u_2^*, u_3 = u_3^*,
 Потребуем, чтобы при $x_2 \to \infty$, смещения стремились к нулю (граничная волна), причем отличны от нуля были только компоненты $u_3$ и $u_3^*$, не зависящие от $x_3$. Такая волна, если существует, является поперечной. Из волнового уравнения получаем:
 \begin{align}
 \frac{\partial^2 u_3}{\partial x_1^2} + \frac{\partial^2 u_3}{\partial x_2^2} &= \frac{1}{c_2^2} \frac{\partial^2 u_3}{\partial t^2}, \nonumber\\
-\frac{\partial^2 u_3^*}{\partial x_1^2} + \frac{\partial^2 u_3}{\partial x_2^2} &= \frac{1}{c_{2*}^2} \frac{\partial^2 u_3^*}{\partial t^2}.
+\frac{\partial^2 u_3^*}{\partial x_1^2} + \frac{\partial^2 u_3^*}{\partial x_2^2} &= \frac{1}{c_{2*}^2} \frac{\partial^2 u_3^*}{\partial t^2}.
 \end{align}
 
 То есть при $x_2 = -H$ верно $\frac{\partial u_3}{\partial x_2} = 0$, а при $x_2 = 0$ верно $u_3 = u_3^*, \mu\frac{\partial u_3}{\partial x_2} = \mu^*\frac{\partial u_3^*}{\partial x_2}$.
@@ -625,7 +625,7 @@ f(x_2) &= A\sin{\alpha q x_2} + B\cos{\alpha q x_2}, \nonumber\\
 f_*(x_2) &= Ce^{-\beta q x_2} + C_1e^{\beta q x_2}.
 \end{align}
 
-Для ограниченности решения $f_*(x_2)$ следует принять $С_1 = 0$, тогда $f_*(x_2) = Ce^{-\beta q x_2}$. Из граничных условий следует, что $B = C, A = - \frac{\mu_* \beta}{\mu \alpha}C$. В итоге получаем
+Для ограниченности решения $f_*(x_2)$ следует принять $C_1 = 0$, тогда $f_*(x_2) = Ce^{-\beta q x_2}$. Из граничных условий следует, что $B = C, A = - \frac{\mu_* \beta}{\mu \alpha}C$. В итоге получаем
 \begin{align}
 \tg{\alpha qH} = \frac{\mu_* \beta}{\mu \alpha}.
 \end{align}
