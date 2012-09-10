@@ -11,7 +11,7 @@
 \usepackage{cite}
 \usepackage{enumerate}
 \usepackage{float}
-\usepackage[top=2.0cm,bottom=2.0cm,left=3.0cm,right=1.5cm]{geometry}
+\usepackage[top=2.0cm,bottom=2.0cm,left=2.0cm,right=2.0cm]{geometry}
 \usepackage[unicode]{hyperref}
 \usepackage{graphicx}
 \usepackage{color}
@@ -22,7 +22,8 @@
 \usepackage{listings}
 \usepackage{subcaption}
 %\usepackage{showkeys}
-\usepackage[onehalfspacing, nodisplayskipstretch]{setspace}
+%\usepackage[onehalfspacing, nodisplayskipstretch]{setspace}
+\usepackage[nodisplayskipstretch]{setspace}
 \usepackage{verbatim}
 \usepackage{array}
 \captionsetup[table]{singlelinecheck=off}
@@ -85,43 +86,15 @@
 \setcounter{tocdepth}{3} % глубина оглавления
 
 \begin{document}
-\input{title}
+\input{title-referat}
 \setcounter{page}{2}
-\tableofcontents
 \clearpage
 \newpage
-\input{preamble}
-%\clearpage
-%\newpage
-%\input{problem}
-%\clearpage
-%\newpage
-%\input{composite}
+\input{referat-meta-first}
 \clearpage
 \newpage
-\input{model}
+\input{referat}
 \clearpage
 \newpage
-\input{method}
-%\clearpage
-%\newpage
-%\input{newmethod}
-\clearpage
-\newpage
-\input{parallel}
-\clearpage
-\newpage
-%\input{testing}
-%\clearpage
-%\newpage
-\input{results}
-\clearpage
-\newpage
-\input{cranium}
-\clearpage
-\newpage
-\input{conclusion}
-\clearpage
-\newpage
-\input{biblio}
+\input{referat-meta-last}
 \end{document}
