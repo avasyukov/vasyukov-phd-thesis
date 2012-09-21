@@ -87,6 +87,7 @@
 \begin{document}
 \input{title}
 \setcounter{page}{2}
+%\renewcommand{\contentsname}{\centering Содержание}
 \tableofcontents
 \clearpage
 \newpage
@@ -123,5 +124,9 @@
 \input{conclusion}
 \clearpage
 \newpage
+\renewcommand\refname{Список использованных источников}
+\makeatletter
+\renewcommand\@biblabel[1]{#1.}
+\makeatother
 \input{biblio}
 \end{document}
