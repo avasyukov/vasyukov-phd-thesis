@@ -122,7 +122,10 @@
 
 \subsection*{Структура и объем диссертации}
 
-Диссертация состоит из введения, пяти глав, заключения и списка использованных источников. Общий объем диссертации составляет 194 страницы. Список использованных источников содержит ссылки на 79 публикаций.
+Диссертация состоит из введения, пяти глав, заключения и списка использованных источников. Общий объем диссертации составляет 196 страниц. Список использованных источников содержит ссылки на 79 публикаций.
+
+\clearpage
+\newpage
 
 \subsection*{Содержание работы}
 
@@ -241,15 +244,26 @@ k \le \sigma \le k+1.
 На основании исследованного метода для одномерного уравнения и схемы расщепления по пространственным переменным в работе предлагается обобщение метода на многомерный случай (см. рис. \ref{pic:method_3d}).
 
 \begin{figure}[ht]
-\begin{subfigure}[b]{0.5\textwidth}
 \centering
-\includegraphics[width=\textwidth]{png/characteristics-2d-triangles-inner.png}
-\caption{Расчет внутреннего узла.}
+\begin{subfigure}[b]{0.45\textwidth}
+\centering
+\includegraphics[width=\textwidth]{png/characteristics-2d-triangles-inner-1.png}
+\caption{Расчет внутреннего узла. Все характеристики, выходящие из узла на новом временном слое, попадают внутрь области.}
 \end{subfigure}
-\begin{subfigure}[b]{0.5\textwidth}
+\begin{subfigure}[b]{0.45\textwidth}
 \centering
-\includegraphics[width=\textwidth]{png/characteristics-2d-triangles-semi-border.png}
-\caption{Расчет узла, близкого к границе.}
+\includegraphics[width=\textwidth]{png/characteristics-2d-triangles-semi-border-1.png}
+\caption{Расчет узла, близкого к границе. Возникают выводящие характеристики, для расчета требуются оба временных слоя.}
+\end{subfigure}
+\begin{subfigure}[b]{0.45\textwidth}
+\centering
+\includegraphics[width=\textwidth]{png/characteristics-2d-triangles-inner-2.png}
+\caption{Расчет внутреннего узла. Положение характеристик в тетраэдрах.}
+\end{subfigure}
+\begin{subfigure}[b]{0.45\textwidth}
+\centering
+\includegraphics[width=\textwidth]{png/characteristics-2d-triangles-semi-border-2.png}
+\caption{Расчет узла, близкого к границе. Положение характеристик в тетраэдрах.}
 \end{subfigure}
 \caption{К конструированию многомерной схемы.}
 \label{pic:method_3d}
@@ -258,13 +272,13 @@ k \le \sigma \le k+1.
 В заключительной части второй главы рассматривается алгоритм параллельной версии разработанного сеточно-характеристического численного метода и архитектура параллельного программного комплекса. Отличительной особенностью реализованного параллельного алгоритма является возможность выполнять расчеты как методом сквозного счета неоднородностей, так и с явным выделением контактных границ. Для этого разработана и реализована параллельная версия детектора столкновений, обеспечивающая поиск зон контакта тел при их взаимном движении и деформациях. Результаты тестирования производительности параллельной версии приведены на рисунке \ref{pic:gcm_boost}.
 \begin{figure}[htp]
 \centering
-\includegraphics[width=0.5\textwidth]{eps/gcm3d-boost.eps}
+\includegraphics[width=0.45\textwidth]{eps/gcm3d-boost.eps}
 \caption{Зависимость производительности от количества вычислительных узлов.}
 \label{pic:gcm_boost}
 \end{figure}
 
-%\clearpage
-%\newpage
+\clearpage
+\newpage
 
 \subsubsection*{Глава 3}
 
@@ -273,7 +287,8 @@ k \le \sigma \le k+1.
 Для примера на рис. \ref{pic:stounly_wave} изображены результаты расчёта волн Стоунли при ударе по пятислойной преграде. Аналогичные результаты расчетов волн других типов приведены в тексте диссертации.
 
 \begin{figure}[ht]
-\begin{subfigure}[b]{0.5\textwidth}
+\centering
+\begin{subfigure}[b]{0.45\textwidth}
 \centering
 \includegraphics[width=\textwidth]{png/stounly-wave/01.png}
 \caption{9 мкс}
@@ -283,7 +298,7 @@ k \le \sigma \le k+1.
 %\includegraphics[width=\textwidth]{png/stounly-wave/02.png}
 %\caption{15 мкс}
 %\end{subfigure}
-\begin{subfigure}[b]{0.5\textwidth}
+\begin{subfigure}[b]{0.45\textwidth}
 \centering
 \includegraphics[width=\textwidth]{png/stounly-wave/03.png}
 \caption{22.5 мкс}
@@ -313,12 +328,13 @@ k \le \sigma \le k+1.
 В завершение третьей главы рассматривается задача о вторичном ударе и взаимодействии упругой волны с зоной материала, разрушенного после первого импульса нагрузки. Рассматриваются сетки разной мелкости и их влияние на качество решения. Прохождение волны через зону разрушенного материала показано на рис. \ref{pic:crack_final_front}.
 
 \begin{figure}[htp]
-\begin{subfigure}[b]{0.5\textwidth}
+\centering
+\begin{subfigure}[b]{0.45\textwidth}
 \centering
 \includegraphics[width=\textwidth]{png/wave-around-crack/final-front-uniform-mesh.png}
 \caption{Однородная мелкая сетка.}
 \end{subfigure}
-\begin{subfigure}[b]{0.5\textwidth}
+\begin{subfigure}[b]{0.45\textwidth}
 \centering
 \includegraphics[width=\textwidth]{png/wave-around-crack/final-front-non-uniform-mesh.png}
 \caption{Сетки разной мелкости.}
@@ -333,6 +349,9 @@ k \le \sigma \le k+1.
 \subsubsection*{Глава 4}
 
 В четвертой главе решается задача о низкоскоростном динамическом нагружении элемента композитной обшивки и силового кессона крыла самолёта. На рис. \ref{pic:construction} приведена схема строения обшивки и силового кессона крыла. Обшивка толщиной 6.5~мм состоит из 3 композитных субпакетов, стрингер толщиной 13~мм -- из 6 аналогичных субпакетов. Каждый субпакет состоит из 11 монослоёв со взаимной ориентацией при укладке 45/0/-45/0/0/90/0/0/-45/0/45. Каждый монослой имеет следующий состав: 60\% -- ориентированные длинные углепластиковые волокна; 40\% -- матрица (эпоксидная смола). 
+
+%\clearpage
+%\newpage
 
 \begin{figure}[htp]
 \center{\includegraphics[width=0.6\textwidth]{png/construction.png}}
